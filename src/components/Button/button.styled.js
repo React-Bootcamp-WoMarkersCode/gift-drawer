@@ -10,5 +10,7 @@ export const Button = styled.button`
   background-color: ${props => 
   props.type === 'red' ? 'red' : 
   props.type === 'purple' ? 'purple' : 
-  props.type === 'green' ? 'green' : 'yellow'}
+  props.type === 'green' ? 'green' : 'yellow'};
+  color: #fff;
+  font-weight: bold;
 `;

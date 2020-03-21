@@ -11,7 +11,29 @@ export function ParticipantsPage(props){
     Email: '',
     Status: false,
     participantItem: {},
-    participantItems: [],
+    participantItems: [
+      {
+        Id: 1,
+        participantId: 1,
+        Name: 'Ana Paula',
+        Phone: '111111111',
+        Email: 'anapaula@gmail.com',
+      },
+      {
+        Id: 2,
+        participantId: 2,
+        Name: 'Angela',
+        Phone: '22222222',
+        Email: 'angela@gmail.com',
+      },
+      {
+        Id: 3,
+        participantId: 3,
+        Name: 'Diana',
+        Phone: '33333333',
+        Email: 'diana@gmail.com',
+      },
+    ],
   })
 
   const handleInputChange = (event) => {

@@ -1,11 +1,12 @@
 import React from 'react';
 import { StyledButton } from '../Button/button'
+import { Title, Form, FormItem} from './FormParticipants.styled'
 
 export const FormParticipant = (props) => {
   return(
-    <form onSubmit={ props.addParticipant } className="form">
-      <h1>Cadastro de participantes</h1> 
-      <div className="form-group">
+    <Form onSubmit={ props.addParticipant } className="form">
+      <Title>Cadastro de participantes</Title> 
+      <FormItem>
         <label>Nome</label>
         <input
           type="text"
@@ -14,8 +15,8 @@ export const FormParticipant = (props) => {
           value={props.Name}
           onChange={ props.handleInputChange}
         />
-      </div>
-      <div className="form-group">
+      </FormItem>
+      <FormItem>
         <label>Telefone</label>
         <input
           type="text"
@@ -24,8 +25,8 @@ export const FormParticipant = (props) => {
           value={props.Phone}
           onChange={ props.handleInputChange}
         />
-      </div>
-      <div className="form-group">
+      </FormItem>
+      <FormItem>
         <label>Email</label>
         <input
           type="text"
@@ -34,8 +35,8 @@ export const FormParticipant = (props) => {
           value={props.Email}
           onChange={ props.handleInputChange}
         />
-      </div>
-      <StyledButton type='red' label='Adicionar' />
-    </form>
+      </FormItem>
+      <StyledButton type='red' label='Adicionar'/>
+    </Form>
   )
 }
