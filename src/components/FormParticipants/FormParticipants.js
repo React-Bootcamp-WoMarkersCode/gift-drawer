@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 export const FormParticipant = (props) => {
   return(
     <>
-      <Link to={'/participants/list'}>voltar</Link>
+      <Link to={'/logged/participants/list'}>Lista</Link>
 
       <Form onSubmit={ props.addParticipant } className="form">
         <Title>Cadastro de participantes</Title> 

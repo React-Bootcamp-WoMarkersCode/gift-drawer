@@ -8,9 +8,8 @@ export const Button = styled.button`
   outline: none;
   border: none;
   background-color: ${props => 
-  props.type === 'red' ? 'red' : 
-  props.type === 'purple' ? 'purple' : 
-  props.type === 'green' ? 'green' : 'yellow'};
+  props.type === 'red' ? '#D33741' : 
+  props.type === 'purple' ? '#552B9A' : '#fff'};
   color: #fff;
   font-weight: bold;
 `;

@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import { FormParticipant } from '../components/FormParticipants/FormParticipants'
 import { ListParticipants } from '../components/ListParticipants/ListParticipants'
 import { Switch, Route } from 'react-router-dom'
+import { Container } from './Containers.styled'
+import { StyledButton } from '../components/Button/Button'
 
 export function ParticipantsPage(props){
   const [participant, setParticipant] = useState({
@@ -72,9 +74,10 @@ export function ParticipantsPage(props){
   }
 
   return(
-    <>
+    <Container>
+      <StyledButton type='purple' label='Importar arquivo'></StyledButton>
       <Switch>
-        <Route path='/participants/new' >
+        <Route path='/logged/participants/new' >
           <FormParticipant 
             Name={ participant.Name }
             Phone={ participant.Phone }
@@ -83,15 +86,13 @@ export function ParticipantsPage(props){
             addParticipant={ addParticipant }
           />
         </Route >
-        <Route path='/participants/list' >
+        <Route path='/logged/participants/list' >
           <ListParticipants 
             participantItems={ participant.participantItems }
             deleteParticipant={ deleteParticipant }
           />
         </Route>
       </Switch>
-
-
-    </>
+    </Container>
   )
 }

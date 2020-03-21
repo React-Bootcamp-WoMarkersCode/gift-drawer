@@ -8,7 +8,7 @@ export const ListParticipants  = (props) => {
     <>
       <Header>
         <h1>Lista de participantes</h1>
-        <Link to={'/participants/new'}>+ adicionar</Link>
+        <Link to={'/logged/participants/new'}>+ adicionar</Link>
       </Header>
 
       <Table>
@@ -31,7 +31,7 @@ export const ListParticipants  = (props) => {
 
                     <td className="table-list-actions">
                       <StyledButton 
-                        type='green'
+                        type='purple'
                         onClick={() => {
                           props.deleteParticipant(item.Id)
                         }}
