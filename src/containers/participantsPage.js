@@ -1,31 +1,59 @@
-import React from 'react';
-import { StyledButton } from '../components/Button/button'
+import React, {useState} from 'react';
+import { FormParticipant } from '../components/FormParticipants/FormParticipants'
+import { ListParticipants } from '../components/ListParticipants/ListParticipants'
 
-export function ParticipantsPage(){
+export function ParticipantsPage(props){
+  const [participant, setParticipant] = useState({
+    Id: null,
+    ParticipantId: 1,
+    Name: '',
+    Phone: '',
+    Email: '',
+    Status: false,
+    participantItem: {},
+    participantItems: [],
+  })
+
+  const handleInputChange = (event) => {
+    setParticipant({ ...participant, [event.target.name]: event.target.value });
+  }
+
+  const addParticipant = (event) => {
+    event.preventDefault();
+    if(!participant.Name || !participant.Phone || !participant.Email ) {
+      alert('preencher tudo');
+    }
+    else {
+      const participantItem = {
+        Id: participant.participantItems.length + 1,
+        ParticipantId: participant.participantItems.length + 1,
+        Name: participant.Name,
+        Phone: participant.Phone,
+        Email: participant.Email,
+      };
+      setParticipant({
+        ...participant,
+        Name: '',
+        Phone: '',
+        Email: '',
+        participantItem: participantItem,
+        participantItems: [...participant.participantItems, participantItem],
+      })
+    }
+  }
+
   return(
-    <form className="form">
-      <h1>Cadastro de participantes</h1> 
-      <div className="form-group">
-        <label>Nome</label>
-        <input 
-        />
-      </div>
-      <div className="form-group">
-        <label>Telefone</label>
-        <input
-        />
-      </div>
-      <div className="form-group">
-        <label>Email</label>
-        <input
-        />
-      </div>
-        <StyledButton type='red' label='Adicionar' />
-        <StyledButton type='purple' label='Adicionar' />
-        <StyledButton type='green' label='Adicionar' />
-        <StyledButton type='outro' label='Adicionar' />
-
-      {/* <span className="warn">*Preencher todos os campos acima</span> */}
-    </form>
+    <>
+      <FormParticipant 
+        Name={ participant.Name }
+        Phone={ participant.Phone }
+        Email={ participant.Email }
+        handleInputChange={ handleInputChange } 
+        addParticipant={ addParticipant }
+      />
+      <ListParticipants 
+        participantItems={ participant.participantItems }
+      />
+    </>
   )
 }
