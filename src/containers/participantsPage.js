@@ -1,17 +1,31 @@
 import React from 'react';
+import { StyledButton } from '../components/Button/button'
 
-export default function ParticipantsPage(){
+export function ParticipantsPage(){
   return(
-    <>
-      <h1>Lista de Participantes</h1>
-      <label>Nome</label>
-      <input></input>
+    <form className="form">
+      <h1>Cadastro de participantes</h1> 
+      <div className="form-group">
+        <label>Nome</label>
+        <input 
+        />
+      </div>
+      <div className="form-group">
+        <label>Telefone</label>
+        <input
+        />
+      </div>
+      <div className="form-group">
+        <label>Email</label>
+        <input
+        />
+      </div>
+        <StyledButton type='red' label='Adicionar' />
+        <StyledButton type='purple' label='Adicionar' />
+        <StyledButton type='green' label='Adicionar' />
+        <StyledButton type='outro' label='Adicionar' />
 
-      <label>Email</label>
-      <input></input>
-
-      <label>Telefone</label>
-      <input></input>
-    </>
+      {/* <span className="warn">*Preencher todos os campos acima</span> */}
+    </form>
   )
 }

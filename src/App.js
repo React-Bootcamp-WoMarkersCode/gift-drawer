@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import ParticipantsPage from './containers/participantsPage'
+import { ParticipantsPage } from './containers/participantsPage'
 
 function App() {
   return (
