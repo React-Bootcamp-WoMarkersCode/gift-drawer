@@ -1,8 +1,14 @@
 import styled from 'styled-components';
 
-export const Title = styled.h1`
-  text-align: left;
-  margin-left: 4%;
+export const Header = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0px 4%;
+  h1{
+    text-align: left;
+  }
 `
 export const Table = styled.table`
 display: flex;

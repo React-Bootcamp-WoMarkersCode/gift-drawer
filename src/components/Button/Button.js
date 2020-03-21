@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button } from'./button.styled'
+import { Button } from'./Button.styled'
 
 export const StyledButton = props => {
   return(

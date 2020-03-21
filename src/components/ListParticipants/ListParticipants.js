@@ -1,11 +1,15 @@
 import React from 'react';
-import { StyledButton } from '../Button/button'
-import { Table, Title } from './ListParticipants.styled'
+import { StyledButton } from '../Button/Button'
+import { Header, Table } from './ListParticipants.styled'
+import { Link } from 'react-router-dom'
 
 export const ListParticipants  = (props) => {
   return (  
     <>
-      <Title>Lista de participantes</Title>
+      <Header>
+        <h1>Lista de participantes</h1>
+        <Link to={'/participants/new'}>+ adicionar</Link>
+      </Header>
 
       <Table>
         <thead>

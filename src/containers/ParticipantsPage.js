@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { FormParticipant } from '../components/FormParticipants/FormParticipants'
 import { ListParticipants } from '../components/ListParticipants/ListParticipants'
+import { Switch, Route } from 'react-router-dom'
 
 export function ParticipantsPage(props){
   const [participant, setParticipant] = useState({
@@ -72,17 +73,25 @@ export function ParticipantsPage(props){
 
   return(
     <>
-      <FormParticipant 
-        Name={ participant.Name }
-        Phone={ participant.Phone }
-        Email={ participant.Email }
-        handleInputChange={ handleInputChange } 
-        addParticipant={ addParticipant }
-      />
-      <ListParticipants 
-        participantItems={ participant.participantItems }
-        deleteParticipant={ deleteParticipant }
-      />
+      <Switch>
+        <Route path='/participants/new' >
+          <FormParticipant 
+            Name={ participant.Name }
+            Phone={ participant.Phone }
+            Email={ participant.Email }
+            handleInputChange={ handleInputChange } 
+            addParticipant={ addParticipant }
+          />
+        </Route >
+        <Route path='/participants/list' >
+          <ListParticipants 
+            participantItems={ participant.participantItems }
+            deleteParticipant={ deleteParticipant }
+          />
+        </Route>
+      </Switch>
+
+
     </>
   )
 }
