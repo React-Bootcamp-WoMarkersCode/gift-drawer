@@ -1,4 +1,5 @@
 import React from 'react';
+import { StyledButton } from '../Button/button'
 
 export const ListParticipants  = (props) => {
   return (  
@@ -14,21 +15,26 @@ export const ListParticipants  = (props) => {
         { 
           props.participantItems.length > 0 ? (
             props.participantItems.map((item) => (
-                <tr key={ item.id }>
+                <tr key={ item.Id }>
                   <td>{ item.Name }</td>
                   <td>{ item.Phone }</td>
                   <td>{ item.Email }</td>
 
                   <td className="table-list-actions">
-                    <button className="btn-action"> deletar
-                    </button>
+                    <StyledButton 
+                      type='green'
+                      onClick={() => {
+                        props.deleteParticipant(item.Id)
+                      }}
+                      label='X'
+                    />
                   </td>
                 </tr>
               )
             )
           ) : (
             <tr>
-              <td>Não há motoristas cadastrados</td>
+              <td>Não há participante cadastrada</td>
             </tr>
           )
         }

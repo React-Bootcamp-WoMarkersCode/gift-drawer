@@ -5,7 +5,7 @@ import { ListParticipants } from '../components/ListParticipants/ListParticipant
 export function ParticipantsPage(props){
   const [participant, setParticipant] = useState({
     Id: null,
-    ParticipantId: 1,
+    participantId: 1,
     Name: '',
     Phone: '',
     Email: '',
@@ -26,7 +26,7 @@ export function ParticipantsPage(props){
     else {
       const participantItem = {
         Id: participant.participantItems.length + 1,
-        ParticipantId: participant.participantItems.length + 1,
+        participantId: participant.participantItems.length + 1,
         Name: participant.Name,
         Phone: participant.Phone,
         Email: participant.Email,
@@ -40,6 +40,12 @@ export function ParticipantsPage(props){
         participantItems: [...participant.participantItems, participantItem],
       })
     }
+    console.log(participant)
+  }
+
+  const deleteParticipant = ( participantId ) => {
+    const newParticipantItems = participant.participantItems.filter( item => item.participantId !== participantId );
+    setParticipant({...participant, participantItems: newParticipantItems});
   }
 
   return(
@@ -53,6 +59,7 @@ export function ParticipantsPage(props){
       />
       <ListParticipants 
         participantItems={ participant.participantItems }
+        deleteParticipant={ deleteParticipant }
       />
     </>
   )
