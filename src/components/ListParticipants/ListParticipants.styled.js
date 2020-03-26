@@ -31,5 +31,8 @@ export const Table = styled.table`
     &:last-child{
     text-align: right;
     }
+    img{
+      cursor: pointer;
+    }
   }
 `;
