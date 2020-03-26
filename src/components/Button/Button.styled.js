@@ -7,9 +7,9 @@ export const Button = styled.button`
   cursor:pointer;
   outline: none;
   border: none;
-  background-color: ${props => 
-  props.type === 'red' ? '#D33741' : 
-  props.type === 'purple' ? '#552B9A' : '#fff'};
+  background-color: ${ props => 
+    props.type === 'red' ? '#D33741' : 
+    props.type === 'purple' ? '#552B9A' : '#fff'};
   color: #fff;
   font-weight: bold;
 `;
