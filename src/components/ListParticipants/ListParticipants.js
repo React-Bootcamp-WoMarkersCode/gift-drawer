@@ -1,7 +1,8 @@
-import React from 'react';
-import { StyledButton } from '../Button/Button'
+import React from 'react'
 import { Header, Table } from './ListParticipants.styled'
 import { Link } from 'react-router-dom'
+import deleteButton from '../../assets/deleteButton.png'
+
 
 export const ListParticipants  = (props) => {
   return (  
@@ -30,13 +31,7 @@ export const ListParticipants  = (props) => {
                     <td>{ item.Email }</td>
 
                     <td className="table-list-actions">
-                      <StyledButton 
-                        type='purple'
-                        onClick={() => {
-                          props.deleteParticipant(item.Id)
-                        }}
-                        label='X'
-                      />
+                      <img src={deleteButton} alt="delete icon" onClick={() => props.deleteParticipant(item.Id)}/>
                     </td>
                   </tr>
                 )

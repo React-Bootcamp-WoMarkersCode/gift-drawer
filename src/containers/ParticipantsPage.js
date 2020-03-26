@@ -92,11 +92,14 @@ export function ParticipantsPage(props){
 
   return(
     <Container>
-      <StyledButton type='purple' label='Importar arquivo'></StyledButton>
+      <StyledButton type='purple' label='Importar arquivo' for='file-upload' />
+      
       <CSVReader
+        inputId='file-upload'
         cssClass="csv-reader-input"
         onFileLoaded={handleForce}
       />
+
       <Switch>
         <Route path='/logged/participants/new' >
           <FormParticipant 
