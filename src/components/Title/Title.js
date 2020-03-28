@@ -16,19 +16,17 @@ const TitleStyle = styled.div`
 `
 const Title = props => {
 	return (
-		<>
-			<TitleStyle
-				top={props.top}
-				bottom={props.bottom}
-				left={props.left}
-				right={props.right}
-				height={props.height}
-				width={props.width}
-				fontSize={props.fontSize}
-				color={props.color}>
-					{props.text}
-			</TitleStyle>
-		</>
+		<TitleStyle
+			top={props.top}
+			bottom={props.bottom}
+			left={props.left}
+			right={props.right}
+			height={props.height}
+			width={props.width}
+			fontSize={props.fontSize}
+			color={props.color}>
+				{props.text}
+		</TitleStyle>
 	)
 }
 export default Title;

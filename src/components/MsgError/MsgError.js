@@ -15,17 +15,7 @@ const ErrorStyle = styled.div`
 `
 const MsgError = props => {
 	return (
-		<>
-			<ErrorStyle
-				top={props.top}
-				bottom={props.bottom}
-				left={props.left}
-				right={props.right}
-				height={props.height}
-				width={props.width}>
-					{props.text}
-			</ErrorStyle>
-		</>
+		<ErrorStyle {...props}>{props.text}</ErrorStyle>
 	)
 }
 export default MsgError;

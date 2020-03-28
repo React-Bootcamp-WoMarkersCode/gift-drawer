@@ -11,10 +11,10 @@ import MsgError from './MsgError/MsgError'
 import styled from 'styled-components';
 
 export const FormItem = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-bottom: 30px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	margin-bottom: 30px;
 `
 
 export default function NewRegister() {
