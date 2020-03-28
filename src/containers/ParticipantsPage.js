@@ -75,6 +75,7 @@ export function ParticipantsPage(props){
   }
 
   const handleForce = data => {
+    console.log(data)
     data.map(item => {
       return(
         participant.participantItems.push({
