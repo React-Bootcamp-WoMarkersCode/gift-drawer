@@ -4,6 +4,7 @@ import { ListParticipants } from '../components/ListParticipants/ListParticipant
 import { Switch, Route } from 'react-router-dom'
 import { Container } from './Containers.styled'
 import { StyledButton } from '../components/Button/Button'
+import CSVReader from 'react-csv-reader'
 
 export function ParticipantsPage(props){
   const [participant, setParticipant] = useState({
@@ -73,9 +74,33 @@ export function ParticipantsPage(props){
     setParticipant({...participant, participantItems: newParticipantItems});
   }
 
+  const handleForce = data => {
+    console.log(data)
+    data.map(item => {
+      return(
+        participant.participantItems.push({
+          Id: participant.participantItems.length + 1,
+          participantId: participant.participantItems.length + 1,
+          Name: item[0],
+          Phone: item[1],
+          Email: item[2],
+        })
+      )
+    })
+    console.log(participant.participantItems)
+    setParticipant({...participant, participantItems: participant.participantItems});
+  };
+
   return(
     <Container>
-      <StyledButton type='purple' label='Importar arquivo'></StyledButton>
+      <StyledButton type='purple' label='Importar arquivo' for='file-upload' />
+      
+      <CSVReader
+        inputId='file-upload'
+        cssClass="csv-reader-input"
+        onFileLoaded={handleForce}
+      />
+
       <Switch>
         <Route path='/logged/participants/new' >
           <FormParticipant 
