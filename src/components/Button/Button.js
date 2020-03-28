@@ -1,0 +1,10 @@
+import React from 'react'
+import { Button } from'./Button.styled'
+
+export const StyledButton = props => {
+  return(
+    <Button type={props.type} onClick={props.onClick}>
+      {props.label}
+    </Button>
+  )
+}
