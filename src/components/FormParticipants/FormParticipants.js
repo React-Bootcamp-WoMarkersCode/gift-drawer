@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyledButton } from '../Button/Button'
-import { StyledInput } from '../Input/Input'
+import { Wrapper } from '../Wrapper/Wrapper'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components';
 
@@ -29,7 +29,7 @@ export const FormParticipant = (props) => {
         <Title>Cadastro de participantes</Title> 
 
         <FormItem>
-          <StyledInput
+          <Wrapper
             textLabel='Nome'
             type="text"
             name="Name"
@@ -40,7 +40,7 @@ export const FormParticipant = (props) => {
         </FormItem>
 
         <FormItem>
-          <StyledInput
+          <Wrapper
             textLabel='Telefone'
             type="text"
             name="Phone"
@@ -51,7 +51,7 @@ export const FormParticipant = (props) => {
         </FormItem>
 
         <FormItem>
-          <StyledInput
+          <Wrapper
             textLabel='Email'
             type="text"
             name="Email"

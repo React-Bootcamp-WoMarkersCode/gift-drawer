@@ -22,7 +22,7 @@ export const Input = styled.div`
   }
 `
 
-export const StyledInput = (props) => {
+export const Wrapper = (props) => {
   return(
     <Input>
       <label>{props.textLabel}</label>
