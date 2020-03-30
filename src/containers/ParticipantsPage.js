@@ -15,7 +15,9 @@ export const Menu = styled.div`
   align-items: center;
   margin-right: 6%;
   a{
-    margin-right: 20px;
+    margin-right: 30px;
+    color: #552B9A;
+    font-size: 17px;
   }
 `
 export function ParticipantsPage(props){
@@ -53,7 +55,7 @@ export function ParticipantsPage(props){
   })
 
   const csvData = [
-    ["Ana Paula", "11-986458116", "anapaula@email.com"],
+    ["Ana Paula", "11-99384766", "anapaula@email.com"],
     ["Angela", "11-984637476", "angela@email.com"]
   ];
 
