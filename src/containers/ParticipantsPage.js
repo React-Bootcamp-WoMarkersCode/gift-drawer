@@ -5,8 +5,9 @@ import { StyledModal } from '../components/Modal/Modal'
 import { Switch, Route, Link } from 'react-router-dom'
 import { Container, ImportDocArea } from './Containers.styled'
 import fileIcon from '../assets/file-plus.png'
-import styled from 'styled-components';
+import { CSVLink } from "react-csv";
 import CSVReader from 'react-csv-reader'
+import styled from 'styled-components'
 
 export const Menu = styled.div`
   display: flex;
@@ -50,6 +51,11 @@ export function ParticipantsPage(props){
       },
     ],
   })
+
+  const csvData = [
+    ["Ana Paula", "11-986458116", "anapaula@email.com"],
+    ["Angela", "11-984637476", "angela@email.com"]
+  ];
 
   const handleInputChange = (event) => {
     setParticipant({ ...participant, [event.target.name]: event.target.value });
@@ -120,7 +126,7 @@ export function ParticipantsPage(props){
               <p>2. salve o arquivo no formato .csv</p>
               <p>3. faça upload do arquivo</p>
 
-              <span>Baixar arquivo</span>
+              <CSVLink data={csvData}>Baixar arquivo</CSVLink>
 
               <ImportDocArea>
                 <label>Upload do arquivo</label>

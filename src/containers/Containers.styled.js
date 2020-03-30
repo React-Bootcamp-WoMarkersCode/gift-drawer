@@ -20,7 +20,4 @@ export const ImportDocArea = styled.div`
     padding: 4px 14px;
     border-radius: 5px;
   }
-  .csv-input{
-
-  }
 ` 

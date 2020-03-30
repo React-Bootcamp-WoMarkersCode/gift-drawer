@@ -40,7 +40,7 @@ export const AntdModal = styled(Modal)`
       p{
         font-size: 14px;
       }
-      span{
+      a{
         font-size: 16px;
         font-weight: bold;
         color: #D33741;
