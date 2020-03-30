@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyledButton } from '../Button/Button'
 import { Wrapper } from '../Wrapper/Wrapper'
-import { Link } from 'react-router-dom'
 import styled from 'styled-components';
 
 export const Title = styled.h1`
@@ -22,47 +21,43 @@ export const FormItem = styled.div`
 
 export const FormParticipant = (props) => {
   return(
-    <>
-      <Link to={'/logged/participants/list'}>Lista</Link>
+    <Form onSubmit={ props.addParticipant } className="form">
+      <Title>Cadastro de participantes</Title> 
 
-      <Form onSubmit={ props.addParticipant } className="form">
-        <Title>Cadastro de participantes</Title> 
+      <FormItem>
+        <Wrapper
+          textLabel='Nome'
+          type="text"
+          name="Name"
+          placeholder="nome"
+          value={props.Name}
+          onChange={ props.handleInputChange}
+        />
+      </FormItem>
 
-        <FormItem>
-          <Wrapper
-            textLabel='Nome'
-            type="text"
-            name="Name"
-            placeholder="nome"
-            value={props.Name}
-            onChange={ props.handleInputChange}
-          />
-        </FormItem>
+      <FormItem>
+        <Wrapper
+          textLabel='Telefone'
+          type="text"
+          name="Phone"
+          placeholder="telefone"
+          value={props.Phone}
+          onChange={ props.handleInputChange}
+        />
+      </FormItem>
 
-        <FormItem>
-          <Wrapper
-            textLabel='Telefone'
-            type="text"
-            name="Phone"
-            placeholder="telefone"
-            value={props.Phone}
-            onChange={ props.handleInputChange}
-          />
-        </FormItem>
+      <FormItem>
+        <Wrapper
+          textLabel='Email'
+          type="text"
+          name="Email"
+          placeholder="email"
+          value={props.Email}
+          onChange={ props.handleInputChange}
+        />
+      </FormItem>
 
-        <FormItem>
-          <Wrapper
-            textLabel='Email'
-            type="text"
-            name="Email"
-            placeholder="email"
-            value={props.Email}
-            onChange={ props.handleInputChange}
-          />
-        </FormItem>
-
-        <StyledButton type='red' label='Adicionar'/>
-      </Form>
-    </>
+      <StyledButton type='red' label='Adicionar'/>
+    </Form>
   )
 }

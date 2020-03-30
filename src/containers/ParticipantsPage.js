@@ -1,10 +1,21 @@
 import React, {useState} from 'react';
 import { FormParticipant } from '../components/FormParticipants/FormParticipants'
 import { ListParticipants } from '../components/ListParticipants/ListParticipants'
-import { Switch, Route } from 'react-router-dom'
-import { Container } from './Containers.styled'
-import { StyledButton } from '../components/Button/Button'
+import { StyledModal } from '../components/Modal/Modal'
+import { Switch, Route, Link } from 'react-router-dom'
+import { Container, ImportDocArea } from './Containers.styled'
+import styled from 'styled-components';
 import CSVReader from 'react-csv-reader'
+
+export const Menu = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: 6%;
+  a{
+    margin-right: 20px;
+  }
+`
 
 export function ParticipantsPage(props){
   const [participant, setParticipant] = useState({
@@ -93,13 +104,27 @@ export function ParticipantsPage(props){
 
   return(
     <Container>
-      <StyledButton type='purple' label='Importar arquivo' for='file-upload' />
-      
-      <CSVReader
-        inputId='file-upload'
-        cssClass="csv-reader-input"
-        onFileLoaded={handleForce}
-      />
+      <Menu>
+        <Link to={'/logged/participants/list'}>ver lista</Link>
+        <Link to={'/logged/participants/new'}>+ adicionar</Link>
+        <StyledModal
+          btnType='purple'
+          btnLabel='importar'
+          modalTitle='Adicionar participantes'
+          content='adicionar'
+        />
+      </Menu>
+
+
+      <ImportDocArea>
+        <CSVReader
+          label="+ importar arquivo .csv"
+          inputId='file-upload'
+          cssClass="csv-reader-input"
+          cssInputClass="csv-input"
+          onFileLoaded={handleForce}
+        />
+      </ImportDocArea>
 
       <Switch>
         <Route path='/logged/participants/new' >
