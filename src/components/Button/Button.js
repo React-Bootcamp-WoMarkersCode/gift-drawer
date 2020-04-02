@@ -9,7 +9,9 @@ export const Button = styled.button`
   margin: 10px;
   border-radius: 50px;
   border: none;
-  box-shadow: 0px 7px 7px rgba(211, 55, 65, 0.25);
+  box-shadow: ${ props => 
+    props.type === 'red' ? '0px 7px 7px rgba(211, 55, 65, 0.25)' : 
+    props.type === 'purple' ? '0px 7px 7px rgba(99, 55, 211, 0.25)' : '#fff'};
   transition: 0.5s;
   width: ${props => props.width};
   cursor:pointer;
@@ -29,7 +31,7 @@ export const Button = styled.button`
 
 export const StyledButton = props => {
   return(
-    <Button type={props.type} onClick={props.onClick}>
+    <Button type={props.type} onClick={props.onClick} id={props.id}>
       {props.label}
     </Button>
   )

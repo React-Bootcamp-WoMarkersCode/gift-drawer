@@ -1,20 +1,10 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import deleteButton from '../../assets/deleteButton.png'
 import styled from 'styled-components';
 
-export const Header = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  margin: 10px 100px;
-  h1{
-    text-align: left;
-  }
-  a{
-    text-decoration: none;
-  }
+export const Title = styled.h1`
+  text-align: left;
+  margin-left: 9%;
 `
 export const Table = styled.table`
   display: flex;
@@ -44,11 +34,7 @@ export const Table = styled.table`
 export const ListParticipants  = (props) => {
   return (  
     <>
-      <Header>
-        <h1>Lista de participantes</h1>
-        <Link to={'/logged/participants/new'}>+ adicionar</Link>
-      </Header>
-
+      <Title>Lista de participantes</Title>
       <Table>
         <thead>
           <tr>
