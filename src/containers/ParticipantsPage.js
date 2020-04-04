@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { FormParticipant } from '../components/FormParticipants/FormParticipants'
 import { ListParticipants } from '../components/ListParticipants/ListParticipants'
 import { StyledModal } from '../components/Modal/Modal'
+import { StyledButton } from '../components/Button/Button'
 import { Switch, Route, Link } from 'react-router-dom'
 import { Container, ImportDocArea } from './Containers.styled'
 import fileIcon from '../assets/file-plus.png'
@@ -53,6 +54,7 @@ export function ParticipantsPage(props){
       },
     ],
   })
+  const [list, setList] = useState([])
 
   const csvData = [
     ["Ana Paula", "11-99384766", "anapaula@email.com"],
@@ -94,8 +96,11 @@ export function ParticipantsPage(props){
   }
 
   const handleForce = data => {
-    console.log(data)
-    data.map(item => {
+    setList(data)
+  };
+
+  const importCsv = () => {
+    list.map(item => {
       return(
         participant.participantItems.push({
           Id: participant.participantItems.length + 1,
@@ -106,9 +111,8 @@ export function ParticipantsPage(props){
         })
       )
     })
-    console.log(participant.participantItems)
     setParticipant({...participant, participantItems: participant.participantItems});
-  };
+  }
 
   return(
     <Container>
@@ -139,6 +143,7 @@ export function ParticipantsPage(props){
                   onFileLoaded={handleForce}
                 />
               </ImportDocArea>
+              <StyledButton type='purple' label='Importar' onClick={importCsv}/>
             </>
           }
         />
