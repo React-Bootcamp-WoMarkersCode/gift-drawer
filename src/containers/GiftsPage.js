@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 
 export function GiftsPage(){
-  const listaInicialParticipants = [
+  const initialListOfParticipants = [
     {
       Id: 1,
       Name: 'Ana Paula',
@@ -29,7 +29,7 @@ export function GiftsPage(){
     },
   ]
 
-  const listaInicialBrindes = [
+  const initialListOfGifts = [
     {
       Id: 1,
       Title:'brinde 1',
@@ -48,58 +48,60 @@ export function GiftsPage(){
     },
   ]
 
-  const [listaParticipantes, setListaParticipantes] = useState(listaInicialParticipants)
-  const [listaBrindes, setlistaBrindes] = useState(listaInicialBrindes)
+  const [listOfParticipants, setListOfParticipants] = useState(initialListOfParticipants)
+  const [listOfGifts, setlistOfGifts] = useState(initialListOfGifts)
   const [winner, setWinner] = useState()
-  const [sortBrinde, setSortBrinde] = useState()
+  const [sortGift, setSortGift] = useState()
 
   const SortParticipant = () => {
-    const index =  Math.floor(Math.random() * listaParticipantes.length);
-    const Participante = listaParticipantes[index]
-    setWinner(Participante.Name)
+    const index =  Math.floor(Math.random() * listOfParticipants.length);
+    const Participant = listOfParticipants[index]
+    setWinner(Participant.Name)
 
-    const newListParticipantes = listaParticipantes.filter(function(item) {
-      return item.Id !== Participante.Id
+    const newListParticipantes = listOfParticipants.filter(function(item) {
+      return item.Id !== Participant.Id
     })
-    setListaParticipantes(newListParticipantes)
+    setListOfParticipants(newListParticipantes)
   }
 
-  const updateListaBrindes = e => {
-   const brinde = e
-   setSortBrinde(brinde.Title)
+  const updateListOfGifts = e => {
+   const gift = e
+   setSortGift(gift.Title)
 
-    const newListBrindes = listaBrindes.filter(function(item) {
-      return item.Id !== brinde.Id
+    const newListGifts = listOfGifts.filter(function(item) {
+      return item.Id !== gift.Id
     })
-    setlistaBrindes(newListBrindes)
+    setlistOfGifts(newListGifts)
   }
 
   return(
     <>
       <h1>BRINDES</h1>
 
-
-      {listaBrindes.map((item) => 
-        <>
-          <input type="checkbox" name="gift"
-          onChange={() => {
-            // console.log(item.Id)
-            updateListaBrindes(item)
-          }}/>
-          <label for="gift">{item.Title}</label>
-        </>
+      {listOfGifts.map((item) => 
+        <div key={item.id}>
+          <input type="checkbox" name="gift" onChange={() => updateListOfGifts(item)}/>
+          <label htmlFor="gift">{item.Title}</label>
+        </div>
       )}
+
       <br />
 
-      {listaBrindes.length > 0 ?
-        <button onClick={SortParticipant}>Sorteio</button>
-        :
-       <p>Acabou</p>
+      {sortGift && 
+        <>
+          {listOfGifts.length > 0 ?
+            <button onClick={SortParticipant}>Sorteio</button>
+            :
+            <p>Acabou</p>
+          }
+        </>
       }
+
+
       <br />
 
       <p>{winner}</p>
-      <p>{sortBrinde}</p>
+      <p>{sortGift}</p>
 
     </>
   )
