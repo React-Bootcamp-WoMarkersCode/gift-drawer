@@ -50,9 +50,8 @@ export function GiftsPage(){
 
   const [listaParticipantes, setListaParticipantes] = useState(listaInicialParticipants)
   const [listaBrindes, setlistaBrindes] = useState(listaInicialBrindes)
-
   const [winner, setWinner] = useState()
-
+  const [sortBrinde, setSortBrinde] = useState()
 
   const SortParticipant = () => {
     const index =  Math.floor(Math.random() * listaParticipantes.length);
@@ -63,51 +62,44 @@ export function GiftsPage(){
       return item.Id !== Participante.Id
     })
     setListaParticipantes(newListParticipantes)
-
-    setTimeout(() => {
-      console.log('listaParticipantes', listaParticipantes)
-    },0)
-
   }
 
-  // const SortBrinde = () => {
-  //   const index =  Math.floor(Math.random() * listaBrindes.length);
-  //   console.log('index', index)
+  const updateListaBrindes = e => {
+   const brinde = e
+   setSortBrinde(brinde.Title)
 
-  //   const Brinde = listaBrindes[index]
-  //   console.log('Brinde', Brinde)
-
-  //   setSortBrinde(Brinde.Title)
-
-  //   const newListBrindes = listaBrindes.filter(function(item) {
-  //     return item.Id !== Brinde.Id
-  //   })
-
-  //   setlistaBrindes(newListBrindes)
-
-  //   setTimeout(() => {
-  //     console.log('listaBrindes', listaBrindes)
-  //   },0)
-  // }
+    const newListBrindes = listaBrindes.filter(function(item) {
+      return item.Id !== brinde.Id
+    })
+    setlistaBrindes(newListBrindes)
+  }
 
   return(
     <>
       <h1>BRINDES</h1>
-      {listaParticipantes.length > 0 ?
+
+
+      {listaBrindes.map((item) => 
+        <>
+          <input type="checkbox" name="gift"
+          onChange={() => {
+            // console.log(item.Id)
+            updateListaBrindes(item)
+          }}/>
+          <label for="gift">{item.Title}</label>
+        </>
+      )}
+      <br />
+
+      {listaBrindes.length > 0 ?
         <button onClick={SortParticipant}>Sorteio</button>
         :
        <p>Acabou</p>
       }
+      <br />
 
       <p>{winner}</p>
-      {/* <p>{sortBrinde}</p> */}
-
-      {listaBrindes.map(item => 
-        <>
-          <input type="checkbox" name="gift"/>
-          <label for="gift">item.Title</label>
-        </>
-      )}
+      <p>{sortBrinde}</p>
 
     </>
   )
