@@ -7,7 +7,7 @@ import { StyledButton } from './Button/Button';
 import Link from './Link/Link';
 import useForm from './useForm';
 import validate from './ValidationForm';
-import MsgError from './MsgError/MsgError'
+// import MsgError from './MsgError/MsgError'
 import styled from 'styled-components';
 
 export const FormItem = styled.div`

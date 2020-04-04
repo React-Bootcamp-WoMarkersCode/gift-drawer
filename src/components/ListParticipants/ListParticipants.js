@@ -31,7 +31,7 @@ export const Table = styled.table`
   }
 `;
 
-export const ListParticipants  = (props) => {
+export const ListParticipants = (props) => {
   return (  
     <>
       <Title>Lista de participantes</Title>
