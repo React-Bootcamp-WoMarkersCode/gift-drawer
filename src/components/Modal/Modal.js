@@ -63,7 +63,7 @@ export const StyledModal = props => {
 
   return(
     <div>
-      <StyledButton type={props.btnType} onClick={showModal} label={props.btnLabel} />
+      <StyledButton className='btn-modal' type={props.btnType} onClick={showModal} label={props.btnLabel} />
 
       <AntdModal
         title={props.modalTitle}

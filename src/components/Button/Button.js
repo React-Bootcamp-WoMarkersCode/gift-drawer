@@ -31,7 +31,7 @@ export const Button = styled.button`
 
 export const StyledButton = props => {
   return(
-    <Button type={props.type} onClick={props.onClick} id={props.id}>
+    <Button type={props.type} onClick={props.onClick} id={props.id} className={props.className}>
       {props.label}
     </Button>
   )
