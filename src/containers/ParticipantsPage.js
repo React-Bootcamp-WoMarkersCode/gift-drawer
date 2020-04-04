@@ -143,7 +143,7 @@ export function ParticipantsPage(props){
                   onFileLoaded={handleForce}
                 />
               </ImportDocArea>
-              <StyledButton type='purple' label='Importar' onClick={importCsv}/>
+              <StyledButton type='red' label='Importar' onClick={importCsv}/>
             </>
           }
         />

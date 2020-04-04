@@ -7,6 +7,7 @@ export const ImportDocArea = styled.div`
   width: 400px;
   display: flex;
   flex-direction: column;
+  margin-bottom: 30px;
   label{
     font-size: 14px;
     line-height: 17px;
