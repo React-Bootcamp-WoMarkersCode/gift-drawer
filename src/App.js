@@ -3,6 +3,7 @@ import './App.css';
 import { LoginPage } from './containers/LoginPage'
 import { LoggedPage } from './containers/LoggedPage'
 import { Switch, Route, BrowserRouter } from 'react-router-dom'
+import { GiftsPage } from './containers/GiftsPage';
 
 function App() {
   return (
@@ -15,6 +16,9 @@ function App() {
           <Route path='/logged' >
             <LoggedPage />
           </Route >
+          <Route path='/gifts'>
+            <GiftsPage/>
+          </Route>
         </Switch>
       </BrowserRouter>
     </div>

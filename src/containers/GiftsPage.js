@@ -1,108 +1,17 @@
-import React, {useState} from 'react';
+import React from 'react';
+import NewGift from '../components/NewGift'
+import SortGift from '../components/SortGift'
+import { Switch, Route } from 'react-router-dom';
 
 export function GiftsPage(){
-  const initialListOfParticipants = [
-    {
-      Id: 1,
-      Name: 'Ana Paula',
-    },
-    {
-      Id: 2,
-      Name: 'Angela',
-    },
-    {
-      Id: 3,
-      Name: 'Diana',
-    },
-    {
-      Id: 4,
-      Name: 'Pry',
-    },
-    {
-      Id: 5,
-      Name: 'Evelyn',
-
-    },
-    {
-      Id: 6,
-      Name: 'Bruna',
-    },
-  ]
-
-  const initialListOfGifts = [
-    {
-      Id: 1,
-      Title:'brinde 1',
-    },
-    {
-      Id: 2,
-      Title:'brinde 2',
-    },
-    {
-      Id: 3,
-      Title:'brinde 3',
-    },
-    {
-      Id: 4,
-      Title:'brinde 4',
-    },
-  ]
-
-  const [listOfParticipants, setListOfParticipants] = useState(initialListOfParticipants)
-  const [listOfGifts, setlistOfGifts] = useState(initialListOfGifts)
-  const [winner, setWinner] = useState()
-  const [sortGift, setSortGift] = useState()
-
-  const SortParticipant = () => {
-    const index =  Math.floor(Math.random() * listOfParticipants.length);
-    const Participant = listOfParticipants[index]
-    setWinner(Participant.Name)
-
-    const newListParticipantes = listOfParticipants.filter(function(item) {
-      return item.Id !== Participant.Id
-    })
-    setListOfParticipants(newListParticipantes)
-  }
-
-  const updateListOfGifts = e => {
-   const gift = e
-   setSortGift(gift.Title)
-
-    const newListGifts = listOfGifts.filter(function(item) {
-      return item.Id !== gift.Id
-    })
-    setlistOfGifts(newListGifts)
-  }
 
   return(
     <>
       <h1>BRINDES</h1>
-
-      {listOfGifts.map((item) => 
-        <div key={item.id}>
-          <input type="checkbox" name="gift" onChange={() => updateListOfGifts(item)}/>
-          <label htmlFor="gift">{item.Title}</label>
-        </div>
-      )}
-
-      <br />
-
-      {sortGift && 
-        <>
-          {listOfGifts.length > 0 ?
-            <button onClick={SortParticipant}>Sorteio</button>
-            :
-            <p>Acabou</p>
-          }
-        </>
-      }
-
-
-      <br />
-
-      <p>{winner}</p>
-      <p>{sortGift}</p>
-
+      <Switch>
+        <Route path="/logged/gifts" exact component={NewGift} />
+        <Route path='/logged/gifts/sort' component={SortGift} />
+      </Switch>
     </>
   )
 }
