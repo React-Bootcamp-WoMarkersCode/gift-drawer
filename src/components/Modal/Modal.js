@@ -51,18 +51,20 @@ export const AntdModal = styled(Modal)`
 `
 
 export const StyledModal = props => {
+  const { btnType, showModal, btnLabel, modalTitle ,visible, onCancel, footer, content} = props
+
   return(
     <div>
-      <StyledButton className='btn-modal' type={props.btnType} onClick={props.showModal} label={props.btnLabel} />
+      <StyledButton className='btn-modal' type={btnType} onClick={showModal} label={btnLabel} />
 
       <AntdModal
-        title={props.modalTitle}
-        visible={props.visible}
-        onCancel={props.onCancel}
-        footer={props.footer}
+        title={modalTitle}
+        visible={visible}
+        onCancel={onCancel}
+        footer={footer}
         destroyOnClose='true'
       >
-        <p>{props.content}</p>
+        <p>{content}</p>
       </AntdModal>
     </div>
   )
