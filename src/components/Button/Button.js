@@ -34,9 +34,10 @@ export const Button = styled.button`
 `;
 
 export const StyledButton = props => {
+  const { type, onClick, id, className, disabled, label} = props
   return(
-    <Button type={props.type} onClick={props.onClick} id={props.id} className={props.className} disabled={props.disabled}>
-      {props.label}
+    <Button type={type} onClick={onClick} id={id} className={className} disabled={disabled}>
+      {label}
     </Button>
   )
 }
