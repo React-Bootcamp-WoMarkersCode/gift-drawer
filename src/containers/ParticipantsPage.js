@@ -35,7 +35,8 @@ export function ParticipantsPage(props){
   const [list, setList] = useState([])
   const [errorMsg, setErrorMsg] = useState()
   const [disabled, setDisabled] = useState(true)
-
+  const [visible, setVisible] = useState(false)
+ 
   const csvData = [
     ["Ana Paula", "11-99384766", "anapaula@email.com"],
     ["Angela", "11-984637476", "angela@email.com"]
@@ -79,6 +80,7 @@ export function ParticipantsPage(props){
     if(data.length > 0){
       setList(data)
       setDisabled(false)
+      setErrorMsg('')
     } else {
       setErrorMsg('Arquivo não pode ser lido!')
     }
@@ -102,9 +104,15 @@ export function ParticipantsPage(props){
         )
       })
       setParticipant({...participant, participantItems: participant.participantItems});
+      setErrorMsg('')
     }else{
       setErrorMsg('Arquivo não pode ser lido!')
     }
+
+    setList([])
+    setTimeout(() => {
+      setVisible(false)
+    }, 1500)
   }
 
   return(
@@ -116,6 +124,9 @@ export function ParticipantsPage(props){
           btnType='purple'
           btnLabel='importar'
           footer={null}
+          showModal={() => setVisible(true)}
+          onCancel={() => setVisible(false)}
+          visible={visible}
           content={
             <>
               <h1>Adicionar participantes</h1>

@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import { StyledButton } from '../Button/Button'
 import styled from 'styled-components';
 import { Modal } from 'antd';
@@ -51,25 +51,16 @@ export const AntdModal = styled(Modal)`
 `
 
 export const StyledModal = props => {
-  const [visible, setVisible] = useState(false)
- 
-  const showModal = () => {
-    setVisible(true)
-  }
-
-  const handleCancel = e => {
-    setVisible(false)
-  };
-
   return(
     <div>
-      <StyledButton className='btn-modal' type={props.btnType} onClick={showModal} label={props.btnLabel} />
+      <StyledButton className='btn-modal' type={props.btnType} onClick={props.showModal} label={props.btnLabel} />
 
       <AntdModal
         title={props.modalTitle}
-        visible={visible}
-        onCancel={handleCancel}
+        visible={props.visible}
+        onCancel={props.onCancel}
         footer={props.footer}
+        destroyOnClose='true'
       >
         <p>{props.content}</p>
       </AntdModal>

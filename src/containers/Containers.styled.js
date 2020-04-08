@@ -21,4 +21,8 @@ export const ImportDocArea = styled.div`
     padding: 4px 14px;
     border-radius: 5px;
   }
+  span{
+    color: red;
+    font-size: 12px;
+  }
 ` 
