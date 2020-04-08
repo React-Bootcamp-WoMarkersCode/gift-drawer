@@ -30,31 +30,10 @@ export function ParticipantsPage(props){
     Email: '',
     Status: false,
     participantItem: {},
-    participantItems: [
-      {
-        Id: 1,
-        participantId: 1,
-        Name: 'Ana Paula',
-        Phone: '111111111',
-        Email: 'anapaula@gmail.com',
-      },
-      {
-        Id: 2,
-        participantId: 2,
-        Name: 'Angela',
-        Phone: '22222222',
-        Email: 'angela@gmail.com',
-      },
-      {
-        Id: 3,
-        participantId: 3,
-        Name: 'Diana',
-        Phone: '33333333',
-        Email: 'diana@gmail.com',
-      },
-    ],
+    participantItems: [],
   })
   const [list, setList] = useState([])
+  const [errorMsg, setErrorMsg] = useState()
 
   const csvData = [
     ["Ana Paula", "11-99384766", "anapaula@email.com"],
@@ -99,6 +78,9 @@ export function ParticipantsPage(props){
     setList(data)
   };
 
+  const handleError = () => {
+    setErrorMsg('Erro ao importar o arquivo')
+  }
   const importCsv = () => {
     list.map(item => {
       return(
@@ -142,7 +124,9 @@ export function ParticipantsPage(props){
                   cssInputClass="csv-input"
                   onFileLoaded={handleForce}
                 />
+                <span>{errorMsg}</span>
               </ImportDocArea>
+
               <StyledButton type='red' label='Importar' onClick={importCsv}/>
             </>
           }

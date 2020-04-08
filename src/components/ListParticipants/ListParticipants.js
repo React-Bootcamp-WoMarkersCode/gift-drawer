@@ -17,7 +17,11 @@ export const Table = styled.table`
     border-top: solid 1px #e4e4e4;
     border-bottom: solid 1px #e4e4e4;
   }
-  tbody tr td{
+  tbody{
+    div{
+      margin: 30px;
+    }
+    tr td{
     width: 25vw;
     text-align: left;
     padding: 0px 20px;
@@ -29,6 +33,7 @@ export const Table = styled.table`
       cursor: pointer;
     }
   }
+}
 `;
 
 export const ListParticipants = (props) => {
@@ -60,9 +65,7 @@ export const ListParticipants = (props) => {
                 )
               )
             ) : (
-              <tr>
-                <td>Não há participante cadastrada</td>
-              </tr>
+              <div>Não há participantes cadastrados</div>
             )
           }
         </tbody>

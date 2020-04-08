@@ -76,6 +76,7 @@ export default function SortGift(){
 
   return(
     <>
+      
       {listOfGifts.map((item) => 
         <div key={item.id}>
           <input type="checkbox" name="gift" onChange={() => updateListOfGifts(item)}/>

@@ -3,7 +3,6 @@ import Panel from './Panel/Panel';
 import Title from './Title/Title';
 import { Wrapper } from './Wrapper/Wrapper'
 import { StyledButton } from './Button/Button';
-import Link from './Link/Link';
 import useForm from './useForm';
 import validate from './ValidationForm';
 import styled from 'styled-components';
