@@ -34,6 +34,7 @@ export function ParticipantsPage(props){
   })
   const [list, setList] = useState([])
   const [errorMsg, setErrorMsg] = useState()
+  const [disabled, setDisabled] = useState(true)
 
   const csvData = [
     ["Ana Paula", "11-99384766", "anapaula@email.com"],
@@ -74,26 +75,36 @@ export function ParticipantsPage(props){
     setParticipant({...participant, participantItems: newParticipantItems});
   }
 
-  const handleForce = data => {
-    setList(data)
+  const handleForce = (data, fileInfo) => {
+    if(data.length > 0){
+      setList(data)
+      setDisabled(false)
+    } else {
+      setErrorMsg('Arquivo não pode ser lido!')
+    }
   };
 
   const handleError = () => {
     setErrorMsg('Erro ao importar o arquivo')
   }
+
   const importCsv = () => {
-    list.map(item => {
-      return(
-        participant.participantItems.push({
-          Id: participant.participantItems.length + 1,
-          participantId: participant.participantItems.length + 1,
-          Name: item[0],
-          Phone: item[1],
-          Email: item[2],
-        })
-      )
-    })
-    setParticipant({...participant, participantItems: participant.participantItems});
+    if(list.length > 0){
+      list.map(item => {
+        return(
+          participant.participantItems.push({
+            Id: participant.participantItems.length + 1,
+            participantId: participant.participantItems.length + 1,
+            Name: item[0],
+            Phone: item[1],
+            Email: item[2],
+          })
+        )
+      })
+      setParticipant({...participant, participantItems: participant.participantItems});
+    }else{
+      setErrorMsg('Arquivo não pode ser lido!')
+    }
   }
 
   return(
@@ -123,11 +134,11 @@ export function ParticipantsPage(props){
                   cssClass="csv-reader-input"
                   cssInputClass="csv-input"
                   onFileLoaded={handleForce}
+                  onError={handleError}
                 />
                 <span>{errorMsg}</span>
               </ImportDocArea>
-
-              <StyledButton type='red' label='Importar' onClick={importCsv}/>
+              <StyledButton type='red' label='Importar' onClick={importCsv} disabled={disabled}/>
             </>
           }
         />

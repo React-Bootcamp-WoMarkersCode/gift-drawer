@@ -27,11 +27,15 @@ export const Button = styled.button`
         props.type === 'purple' ? '#552B9A' : '#fff'};
       cursor: pointer;
     }
+  &:disabled{
+    background-color: #cacaca;
+    box-shadow: 0px 7px 7px rgba(119, 119, 119, 0.25)
+  }
 `;
 
 export const StyledButton = props => {
   return(
-    <Button type={props.type} onClick={props.onClick} id={props.id} className={props.className}>
+    <Button type={props.type} onClick={props.onClick} id={props.id} className={props.className} disabled={props.disabled}>
       {props.label}
     </Button>
   )
