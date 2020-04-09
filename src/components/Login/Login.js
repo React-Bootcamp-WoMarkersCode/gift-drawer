@@ -1,94 +1,116 @@
 import React from 'react';
-import useForm from '../useForm';
-import validate from '../ValidationForm';
-import Logo from '../Logo/Logo';
 import { StyledButton } from '../Button/Button';
-import MsgError from '../MsgError/MsgError'
 import Link from '../Link/Link';
-import Panel from '../Panel/Panel';
 import Label from '../Label/Label';
 import Title from '../Title/Title';
 import { Wrapper } from '../Wrapper/Wrapper'
 import styled from 'styled-components';
 
-export const Div = styled.div`
+const Containter = styled.div`
   display: flex;
-  flex-direction: row;
   justify-content: space-evenly;
+  align-items: center;
+  height: -webkit-fill-available;
+  background: #552B9A;
 `
 
-export const FormItem = styled.div`
+const Row = styled.div`
+  display: flex;
+  justify-content: center;
+`
+
+const Panel = styled.div`
+  background-color: white;
+  border-radius: 4px;
+  font-style: normal;
+  font-weight: normal;
+  width: 500px;
+  height: 600px;
+  background: white;
+  border-radius: 4px;
+`
+
+const Form = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-bottom: 30px;
+`
+
+const FormItem = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  margin-left: 50px;
+  margin-top: 30px;
 `
 
 export default function Login() {
-  const {
-    values,
-    errors,
-    handleChange,
-    handleSubmit,
-  } = useForm(Login, validate);
 
   return (
-    <Div>
-      <Logo />
+    <>
+      <Containter>
+        <img src="https://i.imgur.com/DXLsEFP.png" alt="logotipo"
+          style={{
+            width: "336px",
+            height: "76px"
+          }} />
 
-      <form onSubmit={handleSubmit} noValidate>
-      <Panel width="500px" height="600px" left="720px" top="30px" />
-      <Title text="Entrar" left="780px" top="130px" fontSize="35px" />
-      <FormItem>
-        <Wrapper
-          textLabel='E-mail'
-          type="email"
-          name="email"
-          placeholder="nome@email.com"
-          onChange={handleChange}
-          value={values.email || ''}
-          className={`input ${errors.email}`}
-          required
-        />
-        {errors.email && (
-            <MsgError left="780px" top="280px" text={errors.email} />
-        )}
-      </FormItem>
+        <Panel>
+          <Form>
+            <FormItem>
+              <Title text="Entrar" fontSize="35px" color="black" paddingTop="40px" />
+            </FormItem>
 
-      <FormItem>
-        <Wrapper
-          textLabel='Senha'
-          type="password"
-          name="password"
-          placeholder="••••••••••"
-          onChange={handleChange}
-          value={values.password || ''}
-          className={`input ${errors.password}`}
-          required
-        />
-        {errors.password && (
-          <MsgError left="780px" top="380px" text={errors.password} />
-        )}
-      </FormItem>
+            <FormItem>
+              <Wrapper
+                textLabel='E-mail'
+                type="email"
+                name="email"
+                placeholder="nome@email.com"
+                className="email"
+                required
+                width="380px"
+                height="40px"
+              />
+            </FormItem>
 
-        <Link
-          left="780px" top="430px"
-          href="/reset-password"
-          text="Recuperar senha"
-          fontSize="15px"
-        />
+            <FormItem>
+              <Wrapper
+                textLabel='Senha'
+                type="password"
+                name="password"
+                placeholder="••••••••••"
+                className="password"
+                required
+                width="380px"
+                height="40px"
+              />
 
-        <StyledButton label="Entrar" type="red" />
-            
-        <Label label="Ainda não tem uma conta?"
-            left="825px" top="540px" fontSize="15px" />
-        <Link
-          left="1035px"
-          top="540px"
-          href="/login/new-register"
-          text="Cadastrar"
-          fontSize="15px" />
-      </form>
-    </Div>
+              <Row style={{alignSelf: "flex-end"}}>
+                <Link
+                  href="/reset-password"
+                  text="Recuperar senha"
+                  fontSize="14px"
+                />
+              </Row>
+
+            </FormItem>
+
+            <FormItem>
+              <StyledButton label="Entrar" type="red" width="380px" height="50px" />
+              <Row>
+                <Label label="Ainda não tem uma conta? " fontSize="15px" color="black" />
+                <Link
+                  href="/login/new-register"
+                  text="Cadastrar"
+                  fontSize="15px" paddingLeft="5px" />
+              </Row>
+
+            </FormItem>
+          </Form>
+        </Panel>
+
+      </Containter>
+    </>
   )
 }

@@ -3,13 +3,12 @@ import styled from 'styled-components';
 
 const LinkStyle = styled.div`
   font-family: 'Montserrat', sans-serif;
-  position: absolute;
   font-size: 15px;
   color: #D33741;
-  top: ${props => props.top};
-  left: ${props => props.left};
-  bottom: ${props => props.bottom};
-  right: ${props => props.right};
+  padding-top: ${props => props.paddingTop};
+  padding-left: ${props => props.paddingLeft};
+  padding-bottom: ${props => props.paddingBottom};
+  padding-right: ${props => props.paddingRight};
   height: ${props => props.height};
   width: ${props => props.width};
   &:link{
