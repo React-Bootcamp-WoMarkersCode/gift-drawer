@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Login from '../components/Login/Login';
-import NewRegister from '../components/NewRegister';
+import NewRegister from '../components/NewRegister-Login/NewRegister';
 // import ResetPassword from '../components/ResetPassword'
 
 export function LoginPage(){
