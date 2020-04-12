@@ -14,6 +14,7 @@ export const Button = styled.button`
     props.type === 'purple' ? '0px 7px 7px rgba(99, 55, 211, 0.25)' : '#fff'};
   transition: 0.5s;
   width: ${props => props.width};
+  height: ${props => props.height};
   cursor:pointer;
   outline: none;
   border: none;
@@ -34,9 +35,8 @@ export const Button = styled.button`
 `;
 
 export const StyledButton = props => {
-  const { type, onClick, id, className, disabled, label} = props
-  return(
-    <Button type={type} onClick={onClick} id={id} className={className} disabled={disabled}>
+  const { type, onClick, id, className, disabled, label, width, height} = props
+    <Button type={type} onClick={onClick} id={id} className={className} disabled={disabled} width={width} height={height}>
       {label}
     </Button>
   )

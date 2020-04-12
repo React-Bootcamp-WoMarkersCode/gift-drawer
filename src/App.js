@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import { LoginPage } from './containers/LoginPage'
 import { LoggedPage } from './containers/LoggedPage'
 import { Switch, Route, BrowserRouter } from 'react-router-dom'

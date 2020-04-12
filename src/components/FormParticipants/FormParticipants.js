@@ -20,9 +20,9 @@ export const FormItem = styled.div`
 `
 
 export const FormParticipant = (props) => {
-  return(
-    <Form onSubmit={ props.addParticipant } className="form">
-      <Title>Cadastro de participantes</Title> 
+  return (
+    <Form onSubmit={props.addParticipant} className="form">
+      <Title>Cadastro de participantes</Title>
 
       <FormItem>
         <Wrapper
@@ -31,7 +31,9 @@ export const FormParticipant = (props) => {
           name="Name"
           placeholder="nome"
           value={props.Name}
-          onChange={ props.handleInputChange}
+          onChange={props.handleInputChange}
+          width="100%"
+          height="40px"
         />
       </FormItem>
 
@@ -42,7 +44,9 @@ export const FormParticipant = (props) => {
           name="Phone"
           placeholder="telefone"
           value={props.Phone}
-          onChange={ props.handleInputChange}
+          onChange={props.handleInputChange}
+          width="100%"
+          height="40px"
         />
       </FormItem>
 
@@ -53,11 +57,13 @@ export const FormParticipant = (props) => {
           name="Email"
           placeholder="email"
           value={props.Email}
-          onChange={ props.handleInputChange}
+          onChange={props.handleInputChange}
+          width="100%"
+          height="40px"
         />
       </FormItem>
 
-      <StyledButton type='red' label='Adicionar'/>
+      <StyledButton type='red' label='Adicionar' />
     </Form>
   )
 }

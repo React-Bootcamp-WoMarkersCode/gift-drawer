@@ -18,17 +18,9 @@ export const FormItem = styled.div`
 
 export default function NewRegister() {
 
-  const {
-    values,
-    errors,
-    handleChange,
-    handleSubmit,
-  } = useForm(NewRegister, validate);
-
-
   return (
     <>
-      <form onSubmit={handleSubmit} noValidate style={{ display:'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <form noValidate style={{ display:'flex', flexDirection: 'column', alignItems: 'center' }}>
         <Panel width="520px" height="640px" left="420px" top="10px" />
         <Title text="Cadastro" left="480px" top="50px" fontSize="32px" />
 
@@ -38,14 +30,9 @@ export default function NewRegister() {
             type="text"
             name="name"
             placeholder="Nome Sobrenome"
-            onChange={handleChange}
-            value={values.name || ''}
-            className={`input ${errors.name}`}
+            className="name"
             required
           />
-          {/* {errors.name && (
-              <MsgError left="780px" top="280px" text={errors.name}  />
-          )} */}
         </FormItem>
 
         <FormItem>
@@ -54,14 +41,9 @@ export default function NewRegister() {
             type="email"
             name="email"
             placeholder="nome@email.com"
-            onChange={handleChange}
-            value={values.email || ''}
-            className={`input ${errors.email}`}
+            className="email"
             required
           />
-          {/* {errors.email && (
-              <MsgError left="780px" top="280px" text={errors.email}  />
-          )} */}
         </FormItem>
 
         <FormItem>
@@ -70,14 +52,9 @@ export default function NewRegister() {
             type="senha"
             name="senha"
             placeholder="••••••••••"
-            onChange={handleChange}
-            value={values.password || ''}
-            className={`input ${errors.password}`}
+            className="password"
             required
           />
-          {/* {errors.password && (
-              <MsgError left="780px" top="280px" text={errors.email}  />
-          )} */}
         </FormItem>
 
         <FormItem>
@@ -86,14 +63,9 @@ export default function NewRegister() {
             type="senha"
             name="confirmaSenha"
             placeholder="••••••••••"
-            onChange={handleChange}
-            value={values.confirmPassword || ''}
-            className={`input ${errors.confirmPassword}`}
+            className="confirmPassword"
             required
           />
-          {/* {errors.email && (
-              <MsgError left="780px" top="280px" text={error.confirmPassword}  />
-          )} */}
         </FormItem>
 
         <StyledButton label="Cadastrar" />
