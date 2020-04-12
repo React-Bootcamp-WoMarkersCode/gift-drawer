@@ -31,7 +31,7 @@ export const Wrapper = (props) => {
         name={props.name}
         placeholder={props.placeholder}
         value={props.value}
-        onChange={props.handleInputChange}
+        onChange={props.onChange}
         className={props.className}
       />
     </Input>

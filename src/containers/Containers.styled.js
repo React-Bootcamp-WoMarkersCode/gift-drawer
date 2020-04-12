@@ -7,6 +7,7 @@ export const ImportDocArea = styled.div`
   width: 400px;
   display: flex;
   flex-direction: column;
+  margin-bottom: 30px;
   label{
     font-size: 14px;
     line-height: 17px;
@@ -19,5 +20,9 @@ export const ImportDocArea = styled.div`
     border: solid 1px #80808059;
     padding: 4px 14px;
     border-radius: 5px;
+  }
+  span{
+    color: red;
+    font-size: 12px;
   }
 ` 
