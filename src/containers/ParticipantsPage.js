@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { FormParticipant } from '../components/FormParticipants/FormParticipants'
 import { ListParticipants } from '../components/ListParticipants/ListParticipants'
 import { StyledModal } from '../components/Modal/Modal'
+import { StyledButton } from '../components/Button/Button'
 import { Switch, Route, Link } from 'react-router-dom'
 import { Container, ImportDocArea } from './Containers.styled'
 import fileIcon from '../assets/file-plus.png'
@@ -29,31 +30,13 @@ export function ParticipantsPage(props){
     Email: '',
     Status: false,
     participantItem: {},
-    participantItems: [
-      {
-        Id: 1,
-        participantId: 1,
-        Name: 'Ana Paula',
-        Phone: '111111111',
-        Email: 'anapaula@gmail.com',
-      },
-      {
-        Id: 2,
-        participantId: 2,
-        Name: 'Angela',
-        Phone: '22222222',
-        Email: 'angela@gmail.com',
-      },
-      {
-        Id: 3,
-        participantId: 3,
-        Name: 'Diana',
-        Phone: '33333333',
-        Email: 'diana@gmail.com',
-      },
-    ],
+    participantItems: [],
   })
-
+  const [list, setList] = useState([])
+  const [errorMsg, setErrorMsg] = useState()
+  const [disabled, setDisabled] = useState(true)
+  const [visible, setVisible] = useState(false)
+ 
   const csvData = [
     ["Ana Paula", "11-99384766", "anapaula@email.com"],
     ["Angela", "11-984637476", "angela@email.com"]
@@ -93,22 +76,44 @@ export function ParticipantsPage(props){
     setParticipant({...participant, participantItems: newParticipantItems});
   }
 
-  const handleForce = data => {
-    console.log(data)
-    data.map(item => {
-      return(
-        participant.participantItems.push({
-          Id: participant.participantItems.length + 1,
-          participantId: participant.participantItems.length + 1,
-          Name: item[0],
-          Phone: item[1],
-          Email: item[2],
-        })
-      )
-    })
-    console.log(participant.participantItems)
-    setParticipant({...participant, participantItems: participant.participantItems});
+  const handleForce = (data, fileInfo) => {
+    if(data.length > 0){
+      setList(data)
+      setDisabled(false)
+      setErrorMsg('')
+    } else {
+      setErrorMsg('Arquivo não pode ser lido!')
+    }
   };
+
+  const handleError = () => {
+    setErrorMsg('Erro ao importar o arquivo')
+  }
+
+  const importCsv = () => {
+    if(list.length > 0){
+      list.map(item => {
+        return(
+          participant.participantItems.push({
+            Id: participant.participantItems.length + 1,
+            participantId: participant.participantItems.length + 1,
+            Name: item[0],
+            Phone: item[1],
+            Email: item[2],
+          })
+        )
+      })
+      setParticipant({...participant, participantItems: participant.participantItems});
+      setErrorMsg('')
+    }else{
+      setErrorMsg('Arquivo não pode ser lido!')
+    }
+
+    setList([])
+    setTimeout(() => {
+      setVisible(false)
+    }, 1500)
+  }
 
   return(
     <Container>
@@ -119,6 +124,9 @@ export function ParticipantsPage(props){
           btnType='purple'
           btnLabel='importar'
           footer={null}
+          showModal={() => setVisible(true)}
+          onCancel={() => setVisible(false)}
+          visible={visible}
           content={
             <>
               <h1>Adicionar participantes</h1>
@@ -137,8 +145,11 @@ export function ParticipantsPage(props){
                   cssClass="csv-reader-input"
                   cssInputClass="csv-input"
                   onFileLoaded={handleForce}
+                  onError={handleError}
                 />
+                <span>{errorMsg}</span>
               </ImportDocArea>
+              <StyledButton type='red' label='Importar' onClick={importCsv} disabled={disabled}/>
             </>
           }
         />
