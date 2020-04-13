@@ -32,7 +32,7 @@ export default function NewGift(){
   return (
     <>
       <form onSubmit={handleSubmit} noValidate style={{ display:'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <Panel width="520px" height="640px" left="420px" top="10px" />
+        <Panel />
         <Title text="Inserir Brinde" left="480px" top="50px" fontSize="32px" />
         
         <FormItem>

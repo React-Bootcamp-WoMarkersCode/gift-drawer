@@ -21,7 +21,7 @@ export default function NewRegister() {
   return (
     <>
       <form noValidate style={{ display:'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <Panel width="520px" height="640px" left="420px" top="10px" />
+        <Panel />
         <Title text="Cadastro" left="480px" top="50px" fontSize="32px" />
 
         <FormItem>
