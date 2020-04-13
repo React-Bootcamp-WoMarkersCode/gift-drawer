@@ -4,7 +4,6 @@ import styled from 'styled-components';
 const PanelStyle = styled.div`
   font-family: 'Montserrat', sans-serif;
   background-color: white;
-  position: absolute;
   top: ${props => props.top};
   left: ${props => props.left};
   bottom: ${props => props.bottom};
@@ -14,6 +13,7 @@ const PanelStyle = styled.div`
   border-radius: 4px;
   font-style: normal;
   font-weight: normal;
+  
 `
 const Panel = props => {
   return (
