@@ -81,7 +81,6 @@ export function NewGift(props){
         })
       )
     })
-    console.log(gift.giftItems)
     setGift({...gift, giftItems: gift.giftItems});
   };
 
