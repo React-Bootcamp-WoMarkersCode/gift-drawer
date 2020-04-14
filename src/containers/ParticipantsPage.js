@@ -16,6 +16,11 @@ export const Menu = styled.div`
   justify-content: flex-end;
   align-items: center;
   margin-right: 6%;
+  margin-bottom: 40px;
+  @media only screen and (max-width: 600px) {
+    justify-content: center;
+    margin-right: 0;
+  }
   a{
     margin-right: 30px;
     color: #552B9A;
