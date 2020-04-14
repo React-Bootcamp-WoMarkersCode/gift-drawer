@@ -1,18 +1,9 @@
 import React from 'react'
-import Panel from './Panel/Panel';
-import Title from './Title/Title';
-import { Wrapper } from './Wrapper/Wrapper'
-import { StyledButton } from './Button/Button';
-import useForm from './useForm';
-import validate from './ValidationForm';
 import styled from 'styled-components';
-import NewRegister from './NewRegister'
 import {useState} from 'react';
 import { Switch, Route, Link } from 'react-router-dom'
 import { Container } from '../containers/Containers.styled'
 import { FormGifts } from './Gitfs/GiftsForm'
-
-
 
 export const Menu = styled.div`
   display: flex;

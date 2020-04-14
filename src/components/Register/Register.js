@@ -22,7 +22,7 @@ export default function NewRegister() {
   return (
     <>
       <form onSubmit={handleSubmit} noValidate>
-        <Panel width="520px" height="640px" left="420px" top="10px" />
+        <Panel />
         <Title text="Cadastro" left="480px" top="50px" fontSize="32px" />
 
         <Label label="Seu nome" left="480px" top="130px" fontSize="14px" />
