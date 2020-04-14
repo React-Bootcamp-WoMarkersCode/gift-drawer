@@ -6,8 +6,9 @@ import { StyledButton } from '../components/Button/Button'
 import { Switch, Route, Link } from 'react-router-dom'
 import { Container, ImportDocArea } from './Containers.styled'
 import fileIcon from '../assets/file-plus.png'
-import { CSVLink } from "react-csv";
+import { CSVLink } from "react-csv"
 import CSVReader from 'react-csv-reader'
+import { message } from 'antd'
 import styled from 'styled-components'
 
 export const Menu = styled.div`
@@ -49,7 +50,7 @@ export function ParticipantsPage(props){
   const addParticipant = (event) => {
     event.preventDefault();
     if(!participant.Name || !participant.Phone || !participant.Email ) {
-      alert('preencher tudo');
+      message.warning('Preencha todos os campos');
     }
     else {
       const participantItem = {
