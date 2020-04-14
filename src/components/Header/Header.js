@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import logo from '../../assets/logo.svg'
+import logoSingle from '../../assets/LogoSingle.png'
 import styled from 'styled-components'
 
 export const Header = styled.div`
@@ -32,12 +33,32 @@ export const Header = styled.div`
       transform: translateX(-50%);
     }
   }
+  .logoFull{
+    display: block
+  }
+  .logoSingle{
+    display: none
+  }
+  @media only screen and (max-width: 600px) {
+    padding: 0px 40px;
+    a{
+      margin: 0px 0px 0px 20px;
+    }
+    .logoFull{
+      display: none
+    }
+    .logoSingle{
+      display: block
+    }
+  }
 `
 
 export const MainHeader = () => {
   return(
     <Header>
-      <img src={logo} alt='logo'/>
+      <img src={logo} className='logoFull' alt='logo'/>
+      <img src={logoSingle} className='logoSingle' alt='logo'/>
+
       <div>
         <Link to={'/logged/gifts'}>brindes</Link>
         <Link to={'/logged/participants/new'}>participantes</Link>
