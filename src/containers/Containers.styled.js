@@ -8,6 +8,9 @@ export const ImportDocArea = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 30px;
+  @media only screen and (max-width: 600px) {
+    width: 250px;
+  }
   label{
     font-size: 14px;
     line-height: 17px;
