@@ -35,7 +35,8 @@ export const Button = styled.button`
 `;
 
 export const StyledButton = props => {
-  const { type, onClick, id, className, disabled, label, width, height} = props
+  const { type, onClick, id, className, disabled, label, width, height} = props;
+  return(
     <Button type={type} onClick={onClick} id={id} className={className} disabled={disabled} width={width} height={height}>
       {label}
     </Button>
