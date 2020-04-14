@@ -5,8 +5,6 @@ import { Wrapper } from './Wrapper/Wrapper'
 import Label from './Label/Label';
 import { StyledButton } from './Button/Button';
 import Link from './Link/Link';
-import useForm from './useForm';
-import validate from './ValidationForm';
 import styled from 'styled-components';
 
 export const FormItem = styled.div`

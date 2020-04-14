@@ -1,125 +1,116 @@
 import React from 'react'
-import Panel from './Panel/Panel';
-import Title from './Title/Title';
-import { Wrapper } from './Wrapper/Wrapper'
-import { StyledButton } from './Button/Button';
-import useForm from './useForm';
-import validate from './ValidationForm';
 import styled from 'styled-components';
-import NewRegister from './NewRegister'
+import {useState} from 'react';
+import { Switch, Route, Link } from 'react-router-dom'
+import { Container } from '../containers/Containers.styled'
+import { FormGifts } from './Gitfs/GiftsForm'
 
-export const FormItem = styled.div`
-display: flex;
-justify-content: flex-end;
-align-items: center;
-margin-right: 6%;
-a{
-  margin-right: 30px;
-  color: #552B9A;
-  font-size: 17px;
-}
+export const Menu = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: 6%;
+  a{
+    margin-right: 30px;
+    color: #552B9A;
+    font-size: 17px;
+  }
 `
+export function NewGift(props){
+  const [gift, setGift] = useState({
+    Id: null,
+    Brinde: '',
+    Foto: '',
+    Quantidade: '',
+    Patrocinador: '',
+    Logo: '',
+    giftItem: {},
+    giftsItems: [],
+  })
 
-export default function NewGift(){
-    const {
-    values,
-    errors,
-    handleChange,
-    handleSubmit,
-  } = useForm(NewRegister, validate);
+  const handleInputChange = (event) => {
+    setGift({ ...gift, [event.target.name]: event.target.value });
+  }
 
+  const addGift = (event) => {
+    event.preventDefault();
+    if(!gift.Brinde || !gift.Quantidade || !gift.Patrocinador ) {
+      alert('preencher tudo');
+    }
+    else {
+      const giftItem = {
+        Id: gift.giftsItems.length + 1,
+        giftId: gift.giftItems.length + 1,
+        Brinde: gift.Brinde,
+        Foto: gift.Foto,
+        Quantidade: gift.Quantidade,
+        Patrocinador: gift.Patrocinador,
+        Logo: gift.logo
+      };
+      setGift({
+        ...gift,
+        Brinde: '',
+        Foto: '',
+        Quantidade: '',
+        Patrocinador: '',
+        Logo: '',
+        giftItem: giftItem,
+        giftItems: [...gift.giftItems, giftItem],
+      })
+    }
+    console.log(gift)
+  }
 
-  return (
-    <>
-      <form onSubmit={handleSubmit} noValidate style={{ display:'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <Panel />
-        <Title text="Inserir Brinde" left="480px" top="50px" fontSize="32px" />
-        
-        <FormItem>
-          <Wrapper
-            textLabel='Título do brinde'
-            type="text"
-            name="brinde"
-            placeholder="Digite o título do brinde"
-            onChange={handleChange}
-            value={values.brinde || ''}
-            className={`input ${errors.brinde}`}
-            required
+  const deleteGift = ( giftId ) => {
+    const newGiftItems = gift.giftItems.filter( item => item.gifttId !== giftId );
+    setGift({...gift, giftItems: newGiftItems});
+  }
+
+  const handleForce = data => {
+    console.log(data)
+    data.map(item => {
+      return(
+        gift.giftItems.push({
+          Id: gift.giftItems.length + 1,
+          giftId: gift.giftItems.length + 1,
+          Brinde: item[0],
+          Foto: item[1],
+          Quantidade: item[2],
+          Patrocinador: item[3],
+          Logo: item[4]
+        })
+      )
+    })
+    setGift({...gift, giftItems: gift.giftItems});
+  };
+
+  return(
+    <Container>
+      <Menu>
+        <Link to={'/logged'}>Voltar</Link>
+        <Link to={'/logged/gifts/list'}>ver lista</Link>
+
+      </Menu>
+
+      <Switch>
+        <Route path='/logged/gifts' >
+          <FormGifts 
+            Brinde={ gift.Brinde }
+            Foto={ gift.Foto }
+            Quantidade={ gift.Quantidade }
+            Patrocinador ={gift.Patrocinador}
+            Logo= {gift.Logo}
+            handleInputChange={ handleInputChange } 
+            addGift={ addGift }
           />
-          {/* {errors.name && (
-              <MsgError left="780px" top="280px" text={errors.name}  />
-          )} */}
-        </FormItem>
+        </Route >
 
-        <FormItem>
-          <Wrapper
-            textLabel='Foto do brinde'
-            type="file"
-            name="foto"
-            placeholder="Selecionar arquivo"
-            accept="image/*"
-            onChange={handleChange}
-            value={values.foto || ''}
-            className={`input ${errors.foto}`}
-            required
-          />
-          {/* {errors.email && (
-              <MsgError left="780px" top="280px" text={errors.email}  />
-          )} */}
-        </FormItem>
-
-        <FormItem>
-          <Wrapper
-            textLabel='Quantidade'
-            type="quantidade"
-            name="quantidade"
-            placeholder="Digite a quantidade de brindes"
-            onChange={handleChange}
-            value={values.quantidade || ''}
-            className={`input ${errors.quantidade}`}
-            required
-          />
-          {/* {errors.password && (
-              <MsgError left="780px" top="280px" text={errors.email}  />
-          )} */}
-        </FormItem>
-
-        <FormItem>
-          <Wrapper
-            textLabel='Patrocinador'
-            type="text"
-            name="patrocinador"
-            placeholder="Digite o nome do patrocinador"
-            onChange={handleChange}
-            value={values.patrocinador || ''}
-            className={`input ${errors.patrocinador}`}
-            required
-          />
-          {/* {errors.name && (
-              <MsgError left="780px" top="280px" text={errors.name}  />
-          )} */}
-        </FormItem>
-
-        <FormItem>
-          <Wrapper
-            textLabel='Logo do patrocinador'
-            type="file"
-            name="logo"
-            accept="image/*"
-            placeholder="Selecionar arquivo"
-            onChange={handleChange}
-            value={values.logo || ''}
-            className={`input ${errors.logo}`}
-            required
-          />
-          {/* {errors.email && (
-              <MsgError left="780px" top="280px" text={errors.email}  />
-          )} */}
-        </FormItem>
-
-        <StyledButton label="Cadastrar" />
-
-        </form>
-    </>
+        <Route path='/logged/gifts/list' >
+          
+        </Route>
+      </Switch>
+    </Container>
   )
 }
+
+export default NewGift
