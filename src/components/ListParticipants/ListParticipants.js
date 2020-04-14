@@ -10,6 +10,10 @@ export const Table = styled.table`
   display: flex;
   flex-direction: column;
   margin: 30px 100px;
+  overflow-x: auto;
+  @media only screen and (max-width: 600px) {
+    margin: 30px 10px;
+  }
   thead tr th{
     width: 25vw;
     text-align: left;

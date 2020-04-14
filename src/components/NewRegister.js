@@ -5,8 +5,9 @@ import { Wrapper } from './Wrapper/Wrapper'
 import Label from './Label/Label';
 import { StyledButton } from './Button/Button';
 import Link from './Link/Link';
-// import useForm from './useForm';
-// import validate from './ValidationForm';
+import useForm from './useForm';
+import validate from './ValidationForm';
+
 import styled from 'styled-components';
 
 export const FormItem = styled.div`
@@ -21,7 +22,7 @@ export default function NewRegister() {
   return (
     <>
       <form noValidate style={{ display:'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <Panel width="520px" height="640px" left="420px" top="10px" />
+        <Panel />
         <Title text="Cadastro" left="480px" top="50px" fontSize="32px" />
 
         <FormItem>

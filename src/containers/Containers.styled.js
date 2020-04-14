@@ -2,12 +2,20 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   margin: 40px 0px;
+  @media only screen and (max-width: 600px) {
+    h1{
+      font-size: 1.7em;
+    }
+  }
 `
 export const ImportDocArea = styled.div`
   width: 400px;
   display: flex;
   flex-direction: column;
   margin-bottom: 30px;
+  @media only screen and (max-width: 600px) {
+    width: 250px;
+  }
   label{
     font-size: 14px;
     line-height: 17px;
