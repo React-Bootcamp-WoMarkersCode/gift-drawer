@@ -26,34 +26,6 @@ export const StyledListOfGifts = styled.div`
     grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
     grid-gap: 40px;
     box-sizing: border-box;
-
-        div {
-            cursor:pointer;
-            width: 100%;
-
-            img {
-                height: 300px;
-                object-fit: cover;
-                width: 100%;
-                border-radius: 10px;
-                box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.13);
-            }
-
-            label {
-                display: flex;
-                justify-content: left;
-                box-sizing: border-box;
-                width: 100%;
-                padding: 20px 0;
-                font-family: Montserrat;
-                font-style: normal;
-                font-weight: bold;
-                font-size: 20px;
-                line-height: 24px;
-                overflow-wrap: break-word;
-            }
-        }
-    
 `
 export const initialListOfGifts = [
         {
@@ -85,7 +57,18 @@ export const initialListOfGifts = [
           Id: 6,
           Title:'brinde 6',
           ImgUrl: 'https://i.ibb.co/jJq261y/gift-img.png'
+        },
+        {
+          Id: 7,
+          Title:'brinde 7',
+          ImgUrl: 'https://i.ibb.co/jJq261y/gift-img.png'
+        },
+        {
+          Id: 8,
+          Title:'brinde 8',
+          ImgUrl: 'https://i.ibb.co/jJq261y/gift-img.png'
         }
+        
       ]
 
 export const ListOfGifts = () => {
@@ -98,14 +81,9 @@ export const ListOfGifts = () => {
             <h1>Lista de Brindes</h1>
             <StyledListOfGifts>
                     {listOfGifts.map((item) => 
-                        <div key={item.id}>
-                            <img src={item.ImgUrl} alt='Foto de um brinde'/>
-                            <label>{item.Title}</label>
-                        </div>
+                        <Gift key={item.id} ImgUrl={item.ImgUrl} Title={item.Title} />
                     )}
-                
             </StyledListOfGifts>
-            {/* <Gift /> */}
         </Container>
 
      );
