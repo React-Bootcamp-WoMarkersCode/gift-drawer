@@ -46,6 +46,11 @@ export const AntdModal = styled(Modal)`
         color: #D33741;
         margin: 10px 0px;
       }
+      @media only screen and (max-width: 600px) {
+        h1{
+          font-size: 24px;
+        }
+      }
     }
   }
 `
