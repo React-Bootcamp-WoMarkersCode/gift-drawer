@@ -122,7 +122,6 @@ export function ParticipantsPage(props){
         <Link to={'/logged/participants/list'}>ver lista</Link>
         <Link to={'/logged/participants/new'}>+ adicionar</Link>
         <StyledModal
-          btnType='purple'
           btnLabel='importar'
           footer={null}
           showModal={() => setVisible(true)}
