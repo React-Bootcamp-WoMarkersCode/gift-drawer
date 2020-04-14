@@ -2,11 +2,16 @@ import React from 'react'
 import styled from 'styled-components';
 
 export const Button = styled.button`
-  font-family: ${ props => props.type === 'red' || props.type === 'purple' ? 'Montserrat' : 'unset'};
-  font-size: ${ props => props.type === 'red' || props.type === 'purple' ? '18px' : '17px'};
-  font-weight: ${ props => props.type === 'red' || props.type === 'purple' ? '700' : 'normal'};
-  padding: ${ props => props.type === 'red' || props.type === 'purple' ? '10px 30px' : '0px'};
-  margin: ${ props => props.type === 'red' || props.type === 'purple' ? '10px' : '0px 10px 0px 0px'};
+  font-family: ${ props => 
+    props.type === 'red' || props.type === 'purple' ? 'Montserrat' : 'unset'};
+  font-size: ${props =>
+    props.type === 'red' || props.type === 'purple' ? '18px' : '17px'};
+  font-weight: ${ props =>
+    props.type === 'red' || props.type === 'purple' ? '700' : 'normal'};
+  padding: ${ props =>
+    props.type === 'red' || props.type === 'purple' ? '10px 30px' : '0px'};
+  margin: ${ props =>
+    props.type === 'red' || props.type === 'purple' ? '10px' : '0px 10px 0px 0px'};
   border-radius: 50px;
   border: none;
   box-shadow: ${ props => 
