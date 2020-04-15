@@ -60,7 +60,7 @@ export const MainHeader = () => {
       <img src={logoSingle} className='logoSingle' alt='logo'/>
 
       <div>
-        <Link to={'/logged/gifts'}>brindes</Link>
+        <Link to={'/logged/gifts/new'}>brindes</Link>
         <Link to={'/logged/participants/new'}>participantes</Link>
       </div>
     </Header>

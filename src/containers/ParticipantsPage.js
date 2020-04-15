@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { FormParticipant } from '../components/FormParticipants/FormParticipants'
 import { ListParticipants } from '../components/ListParticipants/ListParticipants'
 import { StyledModal } from '../components/Modal/Modal'
@@ -6,9 +6,8 @@ import { StyledButton } from '../components/Button/Button'
 import { Switch, Route, Link } from 'react-router-dom'
 import { Container, ImportDocArea } from './Containers.styled'
 import fileIcon from '../assets/file-plus.png'
-import { CSVLink } from "react-csv"
 import CSVReader from 'react-csv-reader'
-import { message } from 'antd'
+import { CSVLink } from "react-csv"
 import styled from 'styled-components'
 
 export const Menu = styled.div`
@@ -28,98 +27,29 @@ export const Menu = styled.div`
   }
 `
 export function ParticipantsPage(props){
-  const [participant, setParticipant] = useState({
-    Id: null,
-    participantId: 1,
-    Name: '',
-    Phone: '',
-    Email: '',
-    Status: false,
-    participantItem: {},
-    participantItems: [],
-  })
-  const [list, setList] = useState([])
-  const [errorMsg, setErrorMsg] = useState()
-  const [disabled, setDisabled] = useState(true)
-  const [visible, setVisible] = useState(false)
- 
+
+  const { 
+    showModal,
+    onCancelModal,
+    visibleModal,
+    onFileLoaded,
+    onError,
+    errorMsg,
+    onClickImport,
+    disabledBtn,
+    Name,
+    Phone,
+    Email,
+    handleInputChange,
+    addParticipant,
+    participantItems,
+    deleteParticipant
+  } = props
+
   const csvData = [
     ["Ana Paula", "11-99384766", "anapaula@email.com"],
     ["Angela", "11-984637476", "angela@email.com"]
   ];
-
-  const handleInputChange = (event) => {
-    setParticipant({ ...participant, [event.target.name]: event.target.value });
-  }
-
-  const addParticipant = (event) => {
-    event.preventDefault();
-    if(!participant.Name || !participant.Phone || !participant.Email ) {
-      message.warning('Preencha todos os campos');
-    }
-    else {
-      const participantItem = {
-        Id: participant.participantItems.length + 1,
-        participantId: participant.participantItems.length + 1,
-        Name: participant.Name,
-        Phone: participant.Phone,
-        Email: participant.Email,
-      };
-      setParticipant({
-        ...participant,
-        Name: '',
-        Phone: '',
-        Email: '',
-        participantItem: participantItem,
-        participantItems: [...participant.participantItems, participantItem],
-      })
-    }
-    console.log(participant)
-  }
-
-  const deleteParticipant = ( participantId ) => {
-    const newParticipantItems = participant.participantItems.filter( item => item.participantId !== participantId );
-    setParticipant({...participant, participantItems: newParticipantItems});
-  }
-
-  const handleForce = (data, fileInfo) => {
-    if(data.length > 0){
-      setList(data)
-      setDisabled(false)
-      setErrorMsg('')
-    } else {
-      setErrorMsg('Arquivo não pode ser lido!')
-    }
-  };
-
-  const handleError = () => {
-    setErrorMsg('Erro ao importar o arquivo')
-  }
-
-  const importCsv = () => {
-    if(list.length > 0){
-      list.map(item => {
-        return(
-          participant.participantItems.push({
-            Id: participant.participantItems.length + 1,
-            participantId: participant.participantItems.length + 1,
-            Name: item[0],
-            Phone: item[1],
-            Email: item[2],
-          })
-        )
-      })
-      setParticipant({...participant, participantItems: participant.participantItems});
-      setErrorMsg('')
-    }else{
-      setErrorMsg('Arquivo não pode ser lido!')
-    }
-
-    setList([])
-    setTimeout(() => {
-      setVisible(false)
-    }, 1500)
-  }
 
   return(
     <Container>
@@ -129,9 +59,9 @@ export function ParticipantsPage(props){
         <StyledModal
           btnLabel='importar'
           footer={null}
-          showModal={() => setVisible(true)}
-          onCancel={() => setVisible(false)}
-          visible={visible}
+          showModal={showModal}
+          onCancel={onCancelModal}
+          visible={visibleModal}
           content={
             <>
               <h1>Adicionar participantes</h1>
@@ -149,12 +79,12 @@ export function ParticipantsPage(props){
                   inputId='file-upload'
                   cssClass="csv-reader-input"
                   cssInputClass="csv-input"
-                  onFileLoaded={handleForce}
-                  onError={handleError}
+                  onFileLoaded={onFileLoaded}
+                  onError={onError}
                 />
                 <span>{errorMsg}</span>
               </ImportDocArea>
-              <StyledButton type='red' label='Importar' onClick={importCsv} disabled={disabled}/>
+              <StyledButton type='red' label='Importar' onClick={onClickImport} disabled={disabledBtn}/>
             </>
           }
         />
@@ -163,16 +93,16 @@ export function ParticipantsPage(props){
       <Switch>
         <Route path='/logged/participants/new' >
           <FormParticipant 
-            Name={ participant.Name }
-            Phone={ participant.Phone }
-            Email={ participant.Email }
+            Name={ Name }
+            Phone={ Phone }
+            Email={ Email }
             handleInputChange={ handleInputChange } 
             addParticipant={ addParticipant }
           />
         </Route >
         <Route path='/logged/participants/list' >
           <ListParticipants 
-            participantItems={ participant.participantItems }
+            participantItems={ participantItems }
             deleteParticipant={ deleteParticipant }
           />
         </Route>
