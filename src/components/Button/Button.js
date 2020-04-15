@@ -2,11 +2,16 @@ import React from 'react'
 import styled from 'styled-components';
 
 export const Button = styled.button`
-  font-family: 'Montserrat', sans-serif;
-  font-size: 18px;
-  font-weight: 700;
-  padding: 10px 30px;
-  margin: 10px;
+  font-family: ${ props => 
+    props.type === 'red' || props.type === 'purple' ? 'Montserrat' : 'unset'};
+  font-size: ${props =>
+    props.type === 'red' || props.type === 'purple' ? '18px' : '17px'};
+  font-weight: ${ props =>
+    props.type === 'red' || props.type === 'purple' ? '700' : 'normal'};
+  padding: ${ props =>
+    props.type === 'red' || props.type === 'purple' ? '10px 30px' : '0px'};
+  margin: ${ props =>
+    props.type === 'red' || props.type === 'purple' ? '10px' : '0px 10px 0px 0px'};
   border-radius: 50px;
   border: none;
   box-shadow: ${ props => 
@@ -21,7 +26,7 @@ export const Button = styled.button`
   background-color: ${ props => 
     props.type === 'red' ? '#D33741' : 
     props.type === 'purple' ? '#552B9A' : '#fff'};
-  color: #fff;
+  color: ${ props => props.type === 'red' || props.type === 'purple' ? '#fff' : '#552B9A'};
   &:hover{
       background: ${ props => 
         props.type === 'red' ? 'rgb(209, 5, 19)' : 
@@ -35,7 +40,8 @@ export const Button = styled.button`
 `;
 
 export const StyledButton = props => {
-  const { type, onClick, id, className, disabled, label, width, height} = props;
+  const { type, onClick, id, className, disabled, label, width, height} = props
+
   return(
     <Button type={type} onClick={onClick} id={id} className={className} disabled={disabled} width={width} height={height}>
       {label}

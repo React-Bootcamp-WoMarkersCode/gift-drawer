@@ -3,6 +3,7 @@ import { ParticipantsPage } from './ParticipantsPage'
 import { GiftsPage } from './GiftsPage'
 import { Switch, Route } from 'react-router-dom'
 import { MainHeader } from '../components/Header/Header'
+import { ListOfGifts } from '../components/ListOfGifts'
 
 export const LoggedPage = () => {
   return (
@@ -18,6 +19,7 @@ export const LoggedPage = () => {
         </Route >
       </Switch>
 
+      <ListOfGifts />
     </>
   );
 }

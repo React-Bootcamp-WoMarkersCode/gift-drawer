@@ -6,8 +6,9 @@ import { StyledButton } from '../components/Button/Button'
 import { Switch, Route, Link } from 'react-router-dom'
 import { Container, ImportDocArea } from './Containers.styled'
 import fileIcon from '../assets/file-plus.png'
-import { CSVLink } from "react-csv";
+import { CSVLink } from "react-csv"
 import CSVReader from 'react-csv-reader'
+import { message } from 'antd'
 import styled from 'styled-components'
 
 export const Menu = styled.div`
@@ -15,6 +16,11 @@ export const Menu = styled.div`
   justify-content: flex-end;
   align-items: center;
   margin-right: 6%;
+  margin-bottom: 40px;
+  @media only screen and (max-width: 600px) {
+    justify-content: center;
+    margin-right: 0;
+  }
   a{
     margin-right: 30px;
     color: #552B9A;
@@ -49,7 +55,7 @@ export function ParticipantsPage(props){
   const addParticipant = (event) => {
     event.preventDefault();
     if(!participant.Name || !participant.Phone || !participant.Email ) {
-      alert('preencher tudo');
+      message.warning('Preencha todos os campos');
     }
     else {
       const participantItem = {
@@ -121,7 +127,6 @@ export function ParticipantsPage(props){
         <Link to={'/logged/participants/list'}>ver lista</Link>
         <Link to={'/logged/participants/new'}>+ adicionar</Link>
         <StyledModal
-          btnType='purple'
           btnLabel='importar'
           footer={null}
           showModal={() => setVisible(true)}
