@@ -127,8 +127,6 @@ export const LoggedPage = () => {
           <GiftsPage />
         </Route >
       </Switch>
-
-      <ListOfGifts />
     </>
   );
 }

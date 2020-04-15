@@ -1,21 +1,9 @@
 import React from 'react'
-import styled from 'styled-components';
 import {useState} from 'react';
-import { Switch, Route, Link } from 'react-router-dom'
 import { Container } from '../containers/Containers.styled'
 import { FormGifts } from './Gitfs/GiftsForm'
 
-export const Menu = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  margin-right: 6%;
-  a{
-    margin-right: 30px;
-    color: #552B9A;
-    font-size: 17px;
-  }
-`
+
 export function NewGift(props){
   const [gift, setGift] = useState({
     Id: null,
@@ -86,29 +74,15 @@ export function NewGift(props){
 
   return(
     <Container>
-      <Menu>
-        <Link to={'/logged'}>Voltar</Link>
-        <Link to={'/logged/gifts/list'}>ver lista</Link>
-
-      </Menu>
-
-      <Switch>
-        <Route path='/logged/gifts' >
-          <FormGifts 
-            Brinde={ gift.Brinde }
-            Foto={ gift.Foto }
-            Quantidade={ gift.Quantidade }
-            Patrocinador ={gift.Patrocinador}
-            Logo= {gift.Logo}
-            handleInputChange={ handleInputChange } 
-            addGift={ addGift }
-          />
-        </Route >
-
-        <Route path='/logged/gifts/list' >
-          
-        </Route>
-      </Switch>
+      <FormGifts 
+        Brinde={ gift.Brinde }
+        Foto={ gift.Foto }
+        Quantidade={ gift.Quantidade }
+        Patrocinador ={gift.Patrocinador}
+        Logo= {gift.Logo}
+        handleInputChange={ handleInputChange } 
+        addGift={ addGift }
+      />
     </Container>
   )
 }
