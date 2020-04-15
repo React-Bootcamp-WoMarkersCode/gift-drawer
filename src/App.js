@@ -15,9 +15,6 @@ function App() {
           <Route path='/logged' >
             <LoggedPage />
           </Route >
-          <Route path='/gifts'>
-            <GiftsPage/>
-          </Route>
         </Switch>
       </BrowserRouter>
     </div>

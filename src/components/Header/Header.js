@@ -40,9 +40,11 @@ export const Header = styled.div`
     display: none
   }
   @media only screen and (max-width: 600px) {
+    flex-direction: column;
+    justify-content: space-evenly;
     padding: 0px 40px;
     a{
-      margin: 0px 0px 0px 20px;
+      margin: 0px 10px 0px 10px;
     }
     .logoFull{
       display: none
@@ -62,6 +64,7 @@ export const MainHeader = () => {
       <div>
         <Link to={'/logged/gifts'}>brindes</Link>
         <Link to={'/logged/participants/new'}>participantes</Link>
+        <Link to={'/logged/winners'}>ganhadores</Link>
       </div>
     </Header>
   )
