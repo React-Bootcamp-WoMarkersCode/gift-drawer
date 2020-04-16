@@ -24,7 +24,7 @@ export const AntdModal = styled(Modal)`
   }
   .ant-modal-content{
     padding: 30px 0px;
-    .ant-modal-body p{
+    .ant-modal-body span{
       display: flex;
       flex-direction: column;
       align-items: center;
