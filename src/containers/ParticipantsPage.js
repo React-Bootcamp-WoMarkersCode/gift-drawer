@@ -48,7 +48,11 @@ export function ParticipantsPage(props){
 
   const csvData = [
     ["Ana Paula", "11-99384766", "anapaula@email.com"],
-    ["Angela", "11-984637476", "angela@email.com"]
+    ["Angela", "11-984637476", "angela@email.com"],
+    ["Diana", "11-98839291", "diana@email.com"],
+    ["Pry", "11-929465194", "pry@email.com"],
+    ["Bruna", "11-973836254", "bruna@email.com"],
+    ["Evelyn", "11-998746254", "evelyn@email.com"],
   ];
 
   return(
