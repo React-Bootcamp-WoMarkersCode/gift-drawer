@@ -97,8 +97,7 @@ export default function SortGift(){
       }
       <br />
 
-      <p>{winner}</p>
-      <p>{sortGift}</p>
+
     </>
   )
 }

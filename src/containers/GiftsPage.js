@@ -19,7 +19,7 @@ export const Menu = styled.div`
   }
 `
 
-export function GiftsPage(){
+export function GiftsPage(props){
   return(
     <Container>
       <Menu>
@@ -29,7 +29,9 @@ export function GiftsPage(){
 
       <Switch>
         <Route path="/logged/gifts/new" exact component={NewGift} />
-        <Route path="/logged/gifts/list" component={ListOfGifts} />
+        <Route path="/logged/gifts/list">
+          <ListOfGifts listOfGifts={props.listOfGifts}/>
+        </Route>
         <Route path='/logged/gifts/sort' component={SortGift} />
       </Switch>
     </Container>
