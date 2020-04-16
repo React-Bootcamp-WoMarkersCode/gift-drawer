@@ -1,6 +1,5 @@
 import React from 'react';
 import NewGift from '../components/NewGift'
-import SortGift from '../components/SortGift'
 import { ListOfGifts } from '../components/ListOfGifts'
 import { Container } from './Containers.styled'
 import { Switch, Route, Link } from 'react-router-dom'
@@ -32,7 +31,6 @@ export function GiftsPage(props){
         <Route path="/logged/gifts/list">
           <ListOfGifts listOfGifts={props.listOfGifts}/>
         </Route>
-        <Route path='/logged/gifts/sort' component={SortGift} />
       </Switch>
     </Container>
   )

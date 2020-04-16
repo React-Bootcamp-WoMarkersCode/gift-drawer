@@ -182,7 +182,7 @@ export const LoggedPage = () => {
 
       setTimeout(() => {
         updateListOfGifts(gift)
-      }, 4000)
+      }, 2000)
       
     }
     else {
@@ -215,12 +215,12 @@ export const LoggedPage = () => {
       <MainHeader />
       <div className='Sorteio'>
 
-      {gifts.giftItems.map((item) => 
-        <div key={item.Id}>
-          <label htmlFor="gift">{item.Title}</label>
-          <button onClick={() => SortParticipant(item)}>Sorteio</button>
-        </div>
-      )}
+        {gifts.giftItems.map((item) => 
+          <div key={item.Id}>
+            <label htmlFor="gift">{item.Title}</label>
+            <button onClick={() => SortParticipant(item)}>Sorteio</button>
+          </div>
+        )}
 
       </div>
 
@@ -254,7 +254,7 @@ export const LoggedPage = () => {
           />
         </Route >
         <Route path='/logged/winners' >
-          <WinnersPage />
+          <WinnersPage listOfWinners={winner.winnerItems}/>
         </Route >
       </Switch>
     </>

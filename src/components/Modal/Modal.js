@@ -37,7 +37,7 @@ export const AntdModal = styled(Modal)`
       img{
         margin-bottom: 20px;
       }
-      p{
+      span{
         font-size: 14px;
       }
       a{
@@ -69,7 +69,7 @@ export const StyledModal = props => {
         footer={footer}
         destroyOnClose='true'
       >
-        <p>{content}</p>
+        <span>{content}</span>
       </AntdModal>
     </div>
   )

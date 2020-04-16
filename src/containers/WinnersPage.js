@@ -53,10 +53,13 @@ export const WinnersPage= (props) => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td></td>
-            <td></td>
-          </tr>
+          {props.listOfWinners.map((item, index) => 
+            <tr key={index}>
+              <td>{item.participant}</td>
+              <td>{item.gift}</td>
+            </tr>
+          )}
+
         </tbody>
       </Table>
     </Container>
