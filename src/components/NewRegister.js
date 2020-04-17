@@ -15,6 +15,7 @@ export const FormItem = styled.div`
   flex-direction: column;
   align-items: flex-start;
   margin-bottom: 30px;
+  width: 100%;
 `
 
 export default function NewRegister() {
@@ -71,8 +72,7 @@ export default function NewRegister() {
 
         <StyledButton label="Cadastrar" />
 
-        <Label label="Ainda não tem uma conta?"
-            left="540px" top="600px" fontSize="14px" />
+        <Label label="Ainda não tem uma conta?" fontSize="14px" />
             
         <Link left="735px" top="599px"
             href="/login"

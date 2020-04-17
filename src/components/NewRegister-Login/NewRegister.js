@@ -18,6 +18,8 @@ export const FormItem = styled.div`
   flex-direction: column;
   align-items: flex-start;
   margin-bottom: 20px;
+  padding: 0 40px;
+  width: 100%;
 `
 
 const Panel = styled.div`
@@ -60,8 +62,6 @@ export default function NewRegister() {
                 placeholder="Nome Sobrenome"
                 className="name"
                 required
-                width="400px"
-                height="40px"
               />
             </FormItem>
 
