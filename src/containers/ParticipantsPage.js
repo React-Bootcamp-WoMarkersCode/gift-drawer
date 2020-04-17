@@ -48,7 +48,11 @@ export function ParticipantsPage(props){
 
   const csvData = [
     ["Ana Paula", "11-99384766", "anapaula@email.com"],
-    ["Angela", "11-984637476", "angela@email.com"]
+    ["Angela", "11-984637476", "angela@email.com"],
+    ["Diana", "11-98839291", "diana@email.com"],
+    ["Pry", "11-929465194", "pry@email.com"],
+    ["Bruna", "11-973836254", "bruna@email.com"],
+    ["Evelyn", "11-998746254", "evelyn@email.com"],
   ];
 
   return(
@@ -66,10 +70,10 @@ export function ParticipantsPage(props){
             <>
               <h1>Adicionar participantes</h1>
               <img src={fileIcon} alt='load icon'/>
-              <p>Para inserir a lista de participantes:</p>
-              <p>1. baixe o modelo da planilha</p>
-              <p>2. salve o arquivo no formato .csv</p>
-              <p>3. faça upload do arquivo</p>
+              <span>Para inserir a lista de participantes:</span>
+              <span>1. baixe o modelo da planilha</span>
+              <span>2. salve o arquivo no formato .csv</span>
+              <span>3. faça upload do arquivo</span>
 
               <CSVLink data={csvData}>Baixar arquivo</CSVLink>
 

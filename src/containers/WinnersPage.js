@@ -29,11 +29,8 @@ export const Table = styled.table`
     tr td{
     width: 25vw;
     text-align: left;
-    padding: 0px 20px;
+    padding: 20px;
     border-bottom: solid 1px #e4e4e4;
-    &:last-child{
-    text-align: right;
-    }
     img{
       cursor: pointer;
     }
@@ -53,10 +50,13 @@ export const WinnersPage= (props) => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td></td>
-            <td></td>
-          </tr>
+          {props.listOfWinners.map((item, index) => 
+            <tr key={index}>
+              <td>{item.participant}</td>
+              <td>{item.gift}</td>
+            </tr>
+          )}
+
         </tbody>
       </Table>
     </Container>

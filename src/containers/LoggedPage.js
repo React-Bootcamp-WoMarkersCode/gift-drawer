@@ -1,4 +1,4 @@
-import React, {useState}  from 'react';
+import React, { useState }  from 'react';
 import { ParticipantsPage } from './ParticipantsPage'
 import { GiftsPage } from './GiftsPage'
 import { WinnersPage } from './WinnersPage'
@@ -18,14 +18,94 @@ export const LoggedPage = () => {
     participantItems: [],
   })
 
+  const [gifts, setGifts] = useState({
+    Id: null,
+    Title:'',
+    ImgUrl: '',
+    Quantity: 1,
+    Sponsor: '',
+    ImgSponsorUrl: '',
+    giftItem: {},
+    giftItems: [
+      {
+        Id: 1,
+        Title:'brinde 1',
+        ImgUrl: 'https://i.ibb.co/jJq261y/gift-img.png',
+        Quantity: 1,
+        Sponsor: '',
+        ImgSponsorUrl: '',
+      },
+      {
+        Id: 2,
+        Title:'Bicicleta praiana usada com cestinha',
+        ImgUrl: 'https://images.unsplash.com/photo-1565815146384-5e27ff130edc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80',
+        Quantity: 1,
+        Sponsor: '',
+        ImgSponsorUrl: '',
+      },
+      {
+        Id: 3,
+        Title:'brinde 3',
+        ImgUrl: 'https://i.ibb.co/jJq261y/gift-img.png',
+        Quantity: 1,
+        Sponsor: '',
+        ImgSponsorUrl: '',
+      },
+      {
+        Id: 4,
+        Title:'brinde 4',
+        ImgUrl: 'https://i.ibb.co/jJq261y/gift-img.png',
+        Quantity: 1,
+        Sponsor: '',
+        ImgSponsorUrl: '',
+      },
+      {
+        Id: 5,
+        Title:'brinde 5',
+        ImgUrl: 'https://i.ibb.co/jJq261y/gift-img.png',
+        Quantity: 1,
+        Sponsor: '',
+        ImgSponsorUrl: '',
+      },
+      {
+        Id: 6,
+        Title:'brinde 6',
+        ImgUrl: 'https://i.ibb.co/jJq261y/gift-img.png',
+        Quantity: 1,
+        Sponsor: '',
+        ImgSponsorUrl: '',
+      },
+      {
+        Id: 7,
+        Title:'brinde 7',
+        ImgUrl: 'https://i.ibb.co/jJq261y/gift-img.png',
+        Quantity: 1,
+        Sponsor: '',
+        ImgSponsorUrl: '',
+      },
+      {
+        Id: 8,
+        Title:'brinde 8',
+        ImgUrl: 'https://i.ibb.co/jJq261y/gift-img.png',
+        Quantity: 1,
+        Sponsor: '',
+        ImgSponsorUrl: '',
+      }
+    ],
+  })
+  
+  const [winner, setWinner] = useState({
+    id: null,
+    participant: '',
+    gift: '',
+    winnerItem: {},
+    winnerItems: [],
+  })
+
   const [list, setList] = useState([])
   const [errorMsg, setErrorMsg] = useState('')
   const [disabled, setDisabled] = useState(true)
   const [visible, setVisible] = useState(false)
-
-  const handleInputChange = (event) => {
-    setParticipant({ ...participant, [event.target.name]: event.target.value });
-  }
 
   const addParticipant = (event) => {
     event.preventDefault();
@@ -42,14 +122,10 @@ export const LoggedPage = () => {
       };
       setParticipant({
         ...participant,
-        Name: '',
-        Phone: '',
-        Email: '',
         participantItem: participantItem,
         participantItems: [...participant.participantItems, participantItem],
       })
     }
-    console.log(participant)
   }
 
   const deleteParticipant = ( participantId ) => {
@@ -66,10 +142,6 @@ export const LoggedPage = () => {
       setErrorMsg('Arquivo não pode ser lido!')
     }
   };
-
-  const handleError = () => {
-    setErrorMsg('Erro ao importar o arquivo')
-  }
 
   const importCsv = () => {
     if(list.length > 0){
@@ -96,9 +168,67 @@ export const LoggedPage = () => {
     }, 1500)
   }
 
+  const SortParticipant = (gift) => {
+
+    if(participant.participantItems.length > 0){
+      const index =  Math.floor(Math.random() * participant.participantItems.length);
+      const Participant = participant.participantItems[index]
+      const newListParticipantes = participant.participantItems.filter(function(item) {
+        return item.Id !== Participant.Id
+      })
+
+      addNewWinner(Participant.Name, gift.Title)
+      setParticipant({participantItems: newListParticipantes})
+
+      setTimeout(() => {
+        updateListOfGifts(gift)
+      }, 500)
+      
+    }
+    else {
+      message.error('Não há participantes cadastrados')
+    }
+  }
+
+  const addNewWinner = (participant, gift) => {
+    const winnerItem = {
+      id: winner.winnerItems.length + 1,
+      participant: participant,
+      gift: gift,
+    }
+    setWinner({ 
+      ...winner, 
+      winnerItem: winnerItem,
+      winnerItems: [...winner.winnerItems, winnerItem],
+    })
+  }
+
+  const updateListOfGifts = gift => {
+    const newListGifts = gifts.giftItems.filter(function(item) {
+      return item.Id !== gift.Id
+    })
+    setGifts({giftItems: newListGifts})
+  }
+
   return (
     <>
       <MainHeader />
+      <span>Somente para simular o sorteio!!!!</span>
+      <div className='Sorteio' style={{display: 'flex'}}>
+        {gifts.giftItems.length > 0 ?
+          <>
+            {gifts.giftItems.map((item) => 
+              <div key={item.Id}>
+                <label htmlFor="gift">{item.Title}</label>
+                <br />
+                <button onClick={() => SortParticipant(item)}>Sorteio</button>
+              </div>
+            )}
+          </>
+          :
+          <p>ACABOU</p>
+        }
+      </div>
 
       <Switch>
         <Route path='/logged/participants' >
@@ -108,7 +238,7 @@ export const LoggedPage = () => {
           visibleModal={visible}
 
           onFileLoaded={handleForce}
-          onError={handleError}
+          onError={() => setErrorMsg('Erro ao importar o arquivo')}
           errorMsg={errorMsg}
           onClickImport={importCsv}
           disabledBtn={disabled}
@@ -116,18 +246,21 @@ export const LoggedPage = () => {
           Name={ participant.Name }
           Phone={ participant.Phone }
           Email={ participant.Email }
-          handleInputChange={ handleInputChange } 
+          handleInputChange={event => setParticipant({ ...participant, [event.target.name]: event.target.value }) } 
           addParticipant={ addParticipant }
 
           participantItems={ participant.participantItems }
           deleteParticipant={ deleteParticipant }
           />
         </Route>
+
         <Route path='/logged/gifts' >
-          <GiftsPage />
+          <GiftsPage 
+            listOfGifts={gifts.giftItems}
+          />
         </Route >
         <Route path='/logged/winners' >
-          <WinnersPage />
+          <WinnersPage listOfWinners={winner.winnerItems}/>
         </Route >
       </Switch>
     </>

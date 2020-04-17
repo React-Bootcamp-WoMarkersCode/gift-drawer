@@ -1,6 +1,5 @@
 import React from 'react';
 import NewGift from '../components/NewGift'
-import SortGift from '../components/SortGift'
 import { ListOfGifts } from '../components/ListOfGifts'
 import { Container } from './Containers.styled'
 import { Switch, Route, Link } from 'react-router-dom'
@@ -19,7 +18,7 @@ export const Menu = styled.div`
   }
 `
 
-export function GiftsPage(){
+export function GiftsPage(props){
   return(
     <Container>
       <Menu>
@@ -29,8 +28,9 @@ export function GiftsPage(){
 
       <Switch>
         <Route path="/logged/gifts/new" exact component={NewGift} />
-        <Route path="/logged/gifts/list" component={ListOfGifts} />
-        <Route path='/logged/gifts/sort' component={SortGift} />
+        <Route path="/logged/gifts/list">
+          <ListOfGifts listOfGifts={props.listOfGifts}/>
+        </Route>
       </Switch>
     </Container>
   )
