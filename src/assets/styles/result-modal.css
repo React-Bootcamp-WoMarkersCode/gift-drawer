@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap');
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.modal-btn {
+  padding: 20px 50px;
+  margin: 50px;
+  background: purple;
+  color: white;
+}
+
+.modal-btn:hover {
+  padding: 20px 50px;
+  margin: 50px;
+  background: rgb(105, 34, 105);
+  color: white;
+}
+
+.modal-dialog {
+  max-width: 50%;
+  margin-top: 110px !important;
+}
+
+.modal-result-footer {
+  border: none;
+  padding-bottom: 30px;
+}
+
+.modal-result-footer Button {
+  margin: 0 auto;
+  padding: 10px 40px;
+  color: #ffff;
+  background-color: #552b99;
+}
+
+.modal-result-footer Button:hover {
+  color: #ffff;
+  background-color: #6c49a3;
+}
+
+.modal-result-body {
+  text-align: center;
+}
+
+.modal-result-body h3 {
+  padding-top: 70px;
+}
+
+.modal-result-body p {
+  font-size: 25px;
+}
+
+.trophy-img {
+  width: 260px;
+  height: 220px;
+  margin: 0 auto;
+}
+
+.close-icon {
+  width: 30px;
+  height: 27px;
+  cursor: pointer;
+  float: right;
+}

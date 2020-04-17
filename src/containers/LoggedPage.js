@@ -93,7 +93,7 @@ export const LoggedPage = () => {
       }
     ],
   })
-  
+
   const [winner, setWinner] = useState({
     id: null,
     participant: '',
@@ -183,7 +183,7 @@ export const LoggedPage = () => {
       setTimeout(() => {
         updateListOfGifts(gift)
       }, 500)
-      
+
     }
     else {
       message.error('Não há participantes cadastrados')
@@ -196,8 +196,8 @@ export const LoggedPage = () => {
       participant: participant,
       gift: gift,
     }
-    setWinner({ 
-      ...winner, 
+    setWinner({
+      ...winner,
       winnerItem: winnerItem,
       winnerItems: [...winner.winnerItems, winnerItem],
     })
@@ -217,7 +217,7 @@ export const LoggedPage = () => {
       <div className='Sorteio' style={{display: 'flex'}}>
         {gifts.giftItems.length > 0 ?
           <>
-            {gifts.giftItems.map((item) => 
+            {gifts.giftItems.map((item) =>
               <div key={item.Id}>
                 <label htmlFor="gift">{item.Title}</label>
                 <br />
@@ -232,7 +232,7 @@ export const LoggedPage = () => {
 
       <Switch>
         <Route path='/logged/participants' >
-          <ParticipantsPage 
+          <ParticipantsPage
           showModal={() => setVisible(true)}
           onCancelModal={() => setVisible(false)}
           visibleModal={visible}
@@ -246,7 +246,7 @@ export const LoggedPage = () => {
           Name={ participant.Name }
           Phone={ participant.Phone }
           Email={ participant.Email }
-          handleInputChange={event => setParticipant({ ...participant, [event.target.name]: event.target.value }) } 
+          handleInputChange={event => setParticipant({ ...participant, [event.target.name]: event.target.value }) }
           addParticipant={ addParticipant }
 
           participantItems={ participant.participantItems }
@@ -255,7 +255,7 @@ export const LoggedPage = () => {
         </Route>
 
         <Route path='/logged/gifts' >
-          <GiftsPage 
+          <GiftsPage
             listOfGifts={gifts.giftItems}
           />
         </Route >
