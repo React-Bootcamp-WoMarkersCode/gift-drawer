@@ -29,11 +29,11 @@ export const StyledListOfGifts = styled.div`
 
 export const ListOfGifts = (props) => {
 
-  return ( 
+  return (
     <Container>
       <h1>Lista de Brindes</h1>
       <StyledListOfGifts>
-        {props.listOfGifts.map((item) => 
+        {props.listOfGifts.map((item) =>
           <Gift
             key={item.Id}
             imgUrl={item.ImgUrl}
@@ -41,6 +41,7 @@ export const ListOfGifts = (props) => {
             quantity={item.Quantity}
             sponsor={item.Sponsor}
             imgSponsorUrl={item.ImgSponsorUrl}
+            showModal={props.showModal}
           />
         )}
       </StyledListOfGifts>

@@ -2,7 +2,7 @@ import React from  'react';
 import styled from 'styled-components';
 
 export const StyledGift = styled.div`
-    
+
 cursor:pointer;
 width: 100%;
 display: flex;
@@ -32,12 +32,12 @@ label {
 `
 
 const Gift = (props) => {
-  return ( 
-    <StyledGift key={props.id} {...props}>
+  return (
+    <StyledGift key={props.id} {...props} onClick={props.showModal}>
       <img src={props.imgUrl} alt='Imagem do brinde'/>
       <label>{props.title}</label>
     </StyledGift>
   );
 }
- 
+
 export default Gift;
