@@ -22,67 +22,50 @@ export default function NewRegister() {
   return (
     <>
       <form onSubmit={handleSubmit} noValidate>
-        <Panel />
-        <Title text="Cadastro" left="480px" top="50px" fontSize="32px" />
+        <Panel/>
+          <Title text="Cadastro" fontSize="32px" />
 
-        <Label label="Seu nome" left="480px" top="130px" fontSize="14px" />
-        <Input
-          placeholder="Nome Sobrenome"
-          width="400px"
-          height="40px"
-          left="480px"
-          top="150px" />
-        {errors.name && (
-          <MsgError left="480px" top="190px" text={errors.name} />
-        )}
-        <Label label="E-mail" left="480px" top="220px" fontSize="14px" />
-        <Input
-          placeholder="nome@email.com"
-          width="400px"
-          height="40px"
-          left="480px"
-          top="240px" />
-        {errors.email && (
-          <MsgError left="480px" top="280px" text={errors.email} />
-        )}
+          <Label
+            label="Seu nome"
+            fontSize="14px" />
 
-        <Label label="Senha" left="480px" top="320px" fontSize="14px" />
-        <Input 
-          placeholder="••••••••••"
-          width="400px"
-          height="40px"
-          left="480px"
-          top="340px" />
-        {errors.password && (
-            <MsgError left="480px" top="380px" text={errors.password} />
-        )}
+          <Input
+            placeholder="Nome Sobrenome" />
+            {errors.name && (
+              <MsgError text={errors.name} />
+            )}
 
-        <Label label="Confirmar senha" left="480px" top="420px" fontSize="14px" />
-        <Input
-          placeholder="••••••••••"
-          width="400px"
-          height="40px"
-          left="480px"
-          top="440px" />
-        {errors.password && (
-          <MsgError left="480px" top="480px" text={errors.password} />
-        )}
+          <Label label="E-mail" fontSize="14px" />
 
-        <Button
-          text="Cadastrar"
-          height="50px"
-          width="380px"
-          left="490px"
-          top="520px" />
+          <Input
+            placeholder="nome@email.com"/>
+          {errors.email && (
+            <MsgError text={errors.email} />
+          )}
 
-        <Label label="Ainda não tem uma conta?" left="540px" top="600px" fontSize="14px" />
-        <Link
-          left="735px"
-          top="599px"
-          href="/login"
-          text="Entrar"
-          fontSize="14px" />
-      </form>
+          <Label label="Senha" fontSize="14px" />
+          <Input 
+            placeholder="••••••••••"/>
+          {errors.password && (
+              <MsgError text={errors.password} />
+          )}
+
+          <Label label="Confirmar senha" fontSize="14px" />
+          <Input
+            placeholder="••••••••••" />
+          {errors.password && (
+            <MsgError text={errors.password} />
+          )}
+
+          <Button
+            text="Cadastrar"/>
+
+          <Label label="Ainda não tem uma conta?" fontSize="14px" />
+          <Link
+            href="/login"
+            text="Entrar"
+            fontSize="14px" />
+        </form>
     </>
   )
 }

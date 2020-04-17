@@ -10,8 +10,20 @@ const Containter = styled.div`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  height: -webkit-fill-available;
+  height: 100vh;
+  width: 100%;
   background: #552B9A;
+    img {
+      width: 20%;
+    }
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+        img {
+          width: 40%;
+          padding: 40px 0;
+        }
+     }
 `
 
 const Row = styled.div`
@@ -28,20 +40,22 @@ const Panel = styled.div`
   height: 600px;
   background: white;
   border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+    @media (max-width: 768px) {
+      width: 100%;
+      border-radius: 0px;
+    }
 `
 
 const Form = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: flex-start;
-`
-
-const FormItem = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 10px;
-  margin-left: 50px;
-  margin-top: 30px;
+  width: 80%;
 `
 
 export default function Login() {
@@ -49,19 +63,12 @@ export default function Login() {
   return (
     <>
       <Containter>
-        <img src="https://i.imgur.com/DXLsEFP.png" alt="logotipo"
-          style={{
-            width: "336px",
-            height: "76px"
-          }} />
+        <img src="https://i.imgur.com/DXLsEFP.png" alt="logotipo"/>
 
         <Panel>
           <Form>
-            <FormItem>
-              <Title text="Entrar" fontSize="35px" color="black" paddingTop="40px" />
-            </FormItem>
+              <Title text="Entrar" fontSize="35px" color="black" />
 
-            <FormItem>
               <Wrapper
                 textLabel='E-mail'
                 type="email"
@@ -69,12 +76,10 @@ export default function Login() {
                 placeholder="nome@email.com"
                 className="email"
                 required
-                width="380px"
+                width="100%"
                 height="40px"
               />
-            </FormItem>
 
-            <FormItem>
               <Wrapper
                 textLabel='Senha'
                 type="password"
@@ -82,11 +87,11 @@ export default function Login() {
                 placeholder="••••••••••"
                 className="password"
                 required
-                width="380px"
+                width="100%"
                 height="40px"
               />
 
-              <Row style={{alignSelf: "flex-end"}}>
+              <Row>
                 <Link
                   href="/reset-password"
                   text="Recuperar senha"
@@ -94,19 +99,15 @@ export default function Login() {
                 />
               </Row>
 
-            </FormItem>
-
-            <FormItem>
-              <StyledButton label="Entrar" type="red" width="380px" height="50px" />
+              <StyledButton label="Entrar" type="red" width="100%" height="50px" />
               <Row>
-                <Label label="Ainda não tem uma conta? " fontSize="15px" color="black" />
+                <Label label="Ainda não tem uma conta?  " fontSize="15px" color="black" />
                 <Link
                   href="/login/new-register"
                   text="Cadastrar"
-                  fontSize="15px" paddingLeft="5px" />
+                  fontSize="15px"
+                  />
               </Row>
-
-            </FormItem>
           </Form>
         </Panel>
 

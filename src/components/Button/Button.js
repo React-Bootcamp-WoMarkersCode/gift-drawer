@@ -11,7 +11,7 @@ export const Button = styled.button`
   padding: ${ props =>
     props.type === 'red' || props.type === 'purple' ? '10px 30px' : '0px'};
   margin: ${ props =>
-    props.type === 'red' || props.type === 'purple' ? '10px' : '0px 10px 0px 0px'};
+    props.type === 'red' || props.type === 'purple' ? '0px' : '0px 0px 0px 0px'};
   border-radius: 50px;
   border: none;
   box-shadow: ${ props => 

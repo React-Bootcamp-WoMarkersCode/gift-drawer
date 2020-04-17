@@ -5,10 +5,7 @@ const LinkStyle = styled.div`
   font-family: 'Montserrat', sans-serif;
   font-size: 15px;
   color: #D33741;
-  padding-top: ${props => props.paddingTop};
-  padding-left: ${props => props.paddingLeft};
-  padding-bottom: ${props => props.paddingBottom};
-  padding-right: ${props => props.paddingRight};
+  padding: 10px 0;
   height: ${props => props.height};
   width: ${props => props.width};
   &:link{
