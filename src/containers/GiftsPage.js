@@ -11,9 +11,9 @@ export const Menu = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  margin-right: 6%;
+  margin-right: 40px;
   a{
-    margin-right: 30px;
+    margin-right: 40px;
     color: #552B9A;
     font-size: 17px;
   }

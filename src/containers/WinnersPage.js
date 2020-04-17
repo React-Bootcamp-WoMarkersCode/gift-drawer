@@ -1,16 +1,25 @@
 import React from 'react'
 import styled from 'styled-components';
-import { Container } from './Containers.styled'
 
 
 export const Title = styled.h1`
-  text-align: left;
-  margin-left: 9%;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 28px;
+  line-height: 34px;
+  display: flex;
+  align-items: center;
+  text-align: center;
 `
+export const Container = styled.div`
+  padding: 80px 80px;
+`
+
 export const Table = styled.table`
   display: flex;
   flex-direction: column;
-  margin: 30px 100px;
+  margin: 30px 0px;
   overflow-x: auto;
   @media only screen and (max-width: 600px) {
     margin: 30px 10px;
