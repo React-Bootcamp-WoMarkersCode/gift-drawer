@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import NewGift from '../components/NewGift'
+import React from 'react';
+import { FormGifts } from '../components/Gifts/GiftsForm'
 import { ListOfGifts } from '../components/ListOfGifts'
 import { Container } from './Containers.styled'
 import { Switch, Route, Link } from 'react-router-dom'
@@ -19,6 +19,22 @@ export const Menu = styled.div`
 `
 export function GiftsPage(props){
 
+  const {
+    Gift,
+    GiftImg,
+    Quantity,
+    Sponsor,
+    SponsorImg,
+    handleInputChange,
+    addGift,
+    listOfGifts,
+    showModal,
+    onClick,
+    show,
+    hideModal,
+    winnerName,
+  } = props
+
   return(
     <Container>
       <Menu>
@@ -27,17 +43,29 @@ export function GiftsPage(props){
       </Menu>
 
       <Switch>
-        <Route path="/logged/gifts/new" exact component={NewGift} />
+        <Route path="/logged/gifts/new" >
+          <FormGifts
+            Gift={Gift}
+            GiftImg={GiftImg}
+            Quantity={Quantity}
+            Sponsor={Sponsor}
+            SponsorImg={SponsorImg}
+            handleInputChange={handleInputChange} 
+            addGift={addGift}
+          />
+        </Route> 
+
         <Route path="/logged/gifts/list">
           <ListOfGifts
-            listOfGifts={props.listOfGifts}
-            showModal={props.showModal}
-            onClick={props.onClick}
+            listOfGifts={listOfGifts}
+            showModal={showModal}
+            onClick={onClick}
           />
           <ResultModal
-            show={props.show}
-            hideModal={props.hideModal}
-            winnerName={props.winnerName} />
+            show={show}
+            hideModal={hideModal}
+            winnerName={winnerName}
+          />
         </Route>
       </Switch>
     </Container>
