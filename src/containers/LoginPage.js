@@ -7,6 +7,7 @@ import NewRegister from '../components/NewRegister-Login/NewRegister';
 export function LoginPage(){
   return( 
       <Switch>
+        <Route path="/" exact component={Login} />
         <Route path="/login" exact component={Login} />
         <Route path="/login/new-register" exact component={NewRegister} />
       </Switch>
