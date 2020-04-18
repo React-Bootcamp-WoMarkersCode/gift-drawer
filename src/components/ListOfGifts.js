@@ -31,6 +31,7 @@ export const ListOfGifts = (props) => {
   return (
     <Container>
       <h1>Lista de Brindes</h1>
+      <span>* Clique em um brinde para realizar o sorteio</span>
       <StyledListOfGifts>
       {props.listOfGifts.length > 0 ? 
         <>

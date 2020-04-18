@@ -39,7 +39,7 @@ export const FormGifts = (props) => {
 
       <FormItem>
         <Wrapper
-          textLabel='Brinde'
+          textLabel='Brinde*'
           type="text"
           name="Gift"
           placeholder="brinde"
@@ -61,7 +61,7 @@ export const FormGifts = (props) => {
 
       <FormItem>
         <Wrapper
-          textLabel='Quantidade'
+          textLabel='Quantidade*'
           type="text"
           name="Quantity"
           placeholder="quantidade"
@@ -72,7 +72,7 @@ export const FormGifts = (props) => {
 
       <FormItem>
         <Wrapper
-          textLabel='Patrocinador'
+          textLabel='Patrocinador*'
           type="text"
           name="Sponsor"
           placeholder="patrocinador"

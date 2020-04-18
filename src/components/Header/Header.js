@@ -62,8 +62,8 @@ export const MainHeader = () => {
       <img src={logoSingle} className='logoSingle' alt='logo'/>
 
       <div>
-        <Link to={'/logged/gifts/new'}>brindes</Link>
-        <Link to={'/logged/participants/new'}>participantes</Link>
+        <Link to={'/logged/gifts/list'}>brindes</Link>
+        <Link to={'/logged/participants/list'}>participantes</Link>
         <Link to={'/logged/winners'}>ganhadores</Link>
       </div>
     </Header>

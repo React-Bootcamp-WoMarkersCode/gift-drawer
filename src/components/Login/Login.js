@@ -5,6 +5,7 @@ import Label from '../Label/Label';
 import Title from '../Title/Title';
 import { Wrapper } from '../Wrapper/Wrapper'
 import styled from 'styled-components';
+import { useHistory } from "react-router-dom";
 
 const Containter = styled.div`
   display: flex;
@@ -59,6 +60,7 @@ const Form = styled.div`
 `
 
 export default function Login() {
+  let history = useHistory();
 
   return (
     <>
@@ -99,7 +101,7 @@ export default function Login() {
                 />
               </Row>
 
-              <StyledButton label="Entrar" type="red" width="100%" height="50px" />
+              <StyledButton label="Entrar" type="red" width="100%" height="50px" onClick={() => history.push("/logged") }/>
               <Row>
                 <Label label="Ainda não tem uma conta?  " fontSize="15px" color="black" />
                 <Link

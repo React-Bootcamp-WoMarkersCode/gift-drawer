@@ -37,6 +37,9 @@ export const Button = styled.button`
     background-color: #cacaca;
     box-shadow: 0px 7px 7px rgba(119, 119, 119, 0.25)
   }
+  &:focus, &:active{
+    outline: none;
+  }
 `;
 
 export const StyledButton = props => {

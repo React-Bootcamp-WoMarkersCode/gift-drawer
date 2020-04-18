@@ -8,6 +8,9 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Switch>
+          <Route exact path='/'>
+            <LoginPage />
+          </Route>
           <Route path='/login'>
             <LoginPage />
           </Route>
