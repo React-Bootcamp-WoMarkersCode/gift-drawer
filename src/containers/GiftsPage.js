@@ -4,9 +4,7 @@ import { ListOfGifts } from '../components/ListOfGifts'
 import { Container } from './Containers.styled'
 import { Switch, Route, Link } from 'react-router-dom'
 import styled from 'styled-components'
-
 import ResultModal from '../containers/ResultModal'
-
 
 export const Menu = styled.div`
   display: flex;
@@ -19,12 +17,7 @@ export const Menu = styled.div`
     font-size: 17px;
   }
 `
-
 export function GiftsPage(props){
-  const [showResultModal, setShowResultModal] = useState(false);
-
-  const showModal = () => setShowResultModal(true);
-  const hideModal = () => setShowResultModal(false);
 
   return(
     <Container>
@@ -36,8 +29,15 @@ export function GiftsPage(props){
       <Switch>
         <Route path="/logged/gifts/new" exact component={NewGift} />
         <Route path="/logged/gifts/list">
-          <ListOfGifts listOfGifts={props.listOfGifts} showModal={showModal} />
-          <ResultModal show={showResultModal} hideModal={hideModal} />
+          <ListOfGifts
+            listOfGifts={props.listOfGifts}
+            showModal={props.showModal}
+            onClick={props.onClick}
+          />
+          <ResultModal
+            show={props.show}
+            hideModal={props.hideModal}
+            winnerName={props.winnerName} />
         </Route>
       </Switch>
     </Container>

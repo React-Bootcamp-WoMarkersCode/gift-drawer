@@ -28,7 +28,6 @@ export const StyledListOfGifts = styled.div`
 `
 
 export const ListOfGifts = (props) => {
-
   return (
     <Container>
       <h1>Lista de Brindes</h1>
@@ -42,6 +41,7 @@ export const ListOfGifts = (props) => {
             sponsor={item.Sponsor}
             imgSponsorUrl={item.ImgSponsorUrl}
             showModal={props.showModal}
+            onClick={() => props.onClick(item)}
           />
         )}
       </StyledListOfGifts>

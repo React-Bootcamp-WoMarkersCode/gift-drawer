@@ -106,6 +106,7 @@ export const LoggedPage = () => {
   const [errorMsg, setErrorMsg] = useState('')
   const [disabled, setDisabled] = useState(true)
   const [visible, setVisible] = useState(false)
+  const [showResultModal, setShowResultModal] = useState(false);
 
   const addParticipant = (event) => {
     event.preventDefault();
@@ -179,11 +180,11 @@ export const LoggedPage = () => {
 
       addNewWinner(Participant.Name, gift.Title)
       setParticipant({participantItems: newListParticipantes})
+      setShowResultModal(true)
 
       setTimeout(() => {
         updateListOfGifts(gift)
       }, 500)
-
     }
     else {
       message.error('Não há participantes cadastrados')
@@ -213,23 +214,6 @@ export const LoggedPage = () => {
   return (
     <>
       <MainHeader />
-      <span>Somente para simular o sorteio!!!!</span>
-      <div className='Sorteio' style={{display: 'flex'}}>
-        {gifts.giftItems.length > 0 ?
-          <>
-            {gifts.giftItems.map((item) =>
-              <div key={item.Id}>
-                <label htmlFor="gift">{item.Title}</label>
-                <br />
-                <button onClick={() => SortParticipant(item)}>Sorteio</button>
-              </div>
-            )}
-          </>
-          :
-          <p>ACABOU</p>
-        }
-      </div>
-
       <Switch>
         <Route path='/logged/participants' >
           <ParticipantsPage
@@ -257,6 +241,12 @@ export const LoggedPage = () => {
         <Route path='/logged/gifts' >
           <GiftsPage
             listOfGifts={gifts.giftItems}
+            show={showResultModal}
+            showModal={showResultModal}
+            hideModal={() => setShowResultModal(false)}
+            onClick={SortParticipant}
+            winnerName={winner.winnerItem.participant}
+            />
           />
         </Route >
         <Route path='/logged/winners' >

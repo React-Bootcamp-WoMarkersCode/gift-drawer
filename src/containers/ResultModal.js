@@ -1,4 +1,4 @@
-import React, { useState }from 'react';
+import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
 
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -8,18 +8,17 @@ import '../assets/styles/result-modal.css'
 import close from '../assets/images/close.png'
 import trophy from '../assets/images/trophy.png'
 
-const ResultModal = ({ show, hideModal }) => {
-  const [showModal, setShowModal] = useState(show);
+const ResultModal = ({ show, hideModal, winnerName }) => {
 
   return (
     <Modal show={show} onHide={hideModal} className='modal-winner'>
       <Modal.Body className='modal-result-body scroller'>
-        <img className='close-icon' src={close}  onClick={hideModal}/>
+        <img alt='close-icon' className='close-icon' src={close}  onClick={hideModal}/>
 
         <h3>VENCEDORX</h3>
-        <img className='trophy-img' src={trophy}/>
+        <img alt='trophy-img' className='trophy-img' src={trophy}/>
 
-        <p className='animate heartBeat infinite' >NOME DO VENCEDOR</p>
+        <p className='animate heartBeat infinite' >{winnerName}</p>
       </Modal.Body>
 
       <Modal.Footer className='modal-result-footer'>
