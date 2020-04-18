@@ -13,7 +13,10 @@ export const Title = styled.h1`
   text-align: center;
 `
 export const Container = styled.div`
-  padding: 80px 80px;
+  padding: 80px;
+  @media only screen and (max-width: 600px) {
+    padding: 20px;
+  }
 `
 
 export const Table = styled.table`
