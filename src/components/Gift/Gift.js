@@ -30,11 +30,14 @@ label {
   overflow-wrap: break-word;
 }
 `
-
 const Gift = (props) => {
   return (
-    <StyledGift key={props.id} {...props} onClick={props.showModal}>
-      <img src={props.imgUrl} alt='Imagem do brinde'/>
+    <StyledGift
+      {...props}
+      key={props.id}
+      onClick={props.showModal}
+    >
+      <img src={props.imgUrl} alt='Imagem do brinde' onClick={props.onClick}/>
       <label>{props.title}</label>
     </StyledGift>
   );

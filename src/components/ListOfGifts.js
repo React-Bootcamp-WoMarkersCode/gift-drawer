@@ -28,23 +28,29 @@ export const StyledListOfGifts = styled.div`
 `
 
 export const ListOfGifts = (props) => {
-
   return (
     <Container>
       <h1>Lista de Brindes</h1>
       <StyledListOfGifts>
-        {props.listOfGifts.map((item) =>
-          <Gift
-            key={item.Id}
-            imgUrl={item.ImgUrl}
-            title={item.Title}
-            quantity={item.Quantity}
-            sponsor={item.Sponsor}
-            imgSponsorUrl={item.ImgSponsorUrl}
-            showModal={props.showModal}
-          />
-        )}
+      {props.listOfGifts.length > 0 ? 
+        <>
+          {props.listOfGifts.map((item) =>
+            <Gift
+              key={item.Id}
+              imgUrl={item.GiftImg}
+              title={item.Gift}
+              quantity={item.Quantity}
+              sponsor={item.Sponsor}
+              imgSponsorUrl={item.SponsorImg}
+              showModal={props.showModal}
+              onClick={() => props.onClick(item)}
+            />
+          )}
+        </>
+        :
+        <p>Não há brindes cadastrados</p>
+      }
       </StyledListOfGifts>
     </Container>
-    );
+  );
 }

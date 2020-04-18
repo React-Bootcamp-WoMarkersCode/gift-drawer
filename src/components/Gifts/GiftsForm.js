@@ -41,9 +41,9 @@ export const FormGifts = (props) => {
         <Wrapper
           textLabel='Brinde'
           type="text"
-          name="Brinde"
+          name="Gift"
           placeholder="brinde"
-          value={props.Brinde}
+          value={props.Gift}
           onChange={ props.handleInputChange}
         />
       </FormItem>
@@ -51,10 +51,10 @@ export const FormGifts = (props) => {
       <FormItem>
         <Wrapper
           textLabel='Foto'
-          type="file"
-          name="Foto"
+          type="text"
+          name="GiftImg"
           placeholder="foto"
-          value={props.Foto}
+          value={props.GiftImg}
           onChange={ props.handleInputChange}
         />
       </FormItem>
@@ -63,9 +63,9 @@ export const FormGifts = (props) => {
         <Wrapper
           textLabel='Quantidade'
           type="text"
-          name="Quantidade"
+          name="Quantity"
           placeholder="quantidade"
-          value={props.Quantidade}
+          value={props.Quantity}
           onChange={ props.handleInputChange}
         />
       </FormItem>
@@ -74,9 +74,9 @@ export const FormGifts = (props) => {
         <Wrapper
           textLabel='Patrocinador'
           type="text"
-          name="Patrocinador"
+          name="Sponsor"
           placeholder="patrocinador"
-          value={props.Patrocinador}
+          value={props.Sponsor}
           onChange={ props.handleInputChange}
         />
       </FormItem>
@@ -84,10 +84,10 @@ export const FormGifts = (props) => {
       <FormItem>
         <Wrapper
           textLabel='Logo'
-          type="file"
-          name="Logo"
+          type="text"
+          name="SponsorImg"
           placeholder="logo"
-          value={props.logo}
+          value={props.SponsorImg}
           onChange={ props.handleInputChange}
         />
       </FormItem>
