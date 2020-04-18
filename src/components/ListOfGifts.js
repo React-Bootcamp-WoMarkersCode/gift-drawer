@@ -10,7 +10,7 @@ export const Container = styled.div`
   padding: 80px 0;
     h1 {
     text-align: left;
-    font-family: Poppins;
+    font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 900;
     font-size: 45px;

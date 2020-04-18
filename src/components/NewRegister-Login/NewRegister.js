@@ -11,6 +11,10 @@ const Containter = styled.div`
   justify-content: center;
   height: -webkit-fill-available;
   background: #552B9A;
+
+  @media only screen and (max-width: 768px) {
+      flex-direction: column;
+  }
 `
 
 export const FormItem = styled.div`
@@ -32,6 +36,10 @@ const Panel = styled.div`
   background: white;
   border-radius: 4px;
   margin-top: 30px;
+  @media (max-width: 768px) {
+    width: 100%;
+    border-radius: 0px;
+  }
 `
 const Form = styled.form`
   display: flex; 
@@ -111,7 +119,7 @@ export default function NewRegister() {
               <Link left="735px" top="599px"
                 href="/login"
                 text="Entrar"
-                fontSize="15px" paddingLeft="5px" />
+                fontSize="15px" paddingLeft="5px" paddingTop="10px" />
             </Row>
           </Form>
         </Panel>
