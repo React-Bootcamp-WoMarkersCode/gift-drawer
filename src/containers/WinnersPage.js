@@ -54,23 +54,28 @@ export const WinnersPage= (props) => {
   return (  
     <Container>
       <Title>Sorteios realizados</Title>
-      <Table>
-        <thead>
-          <tr>
-            <th>Ganhador(a)</th>
-            <th>Prêmio</th>
-          </tr>
-        </thead>
-        <tbody>
-          {props.listOfWinners.map((item, index) => 
-            <tr key={index}>
-              <td>{item.participant}</td>
-              <td>{item.gift}</td>
-            </tr>
-          )}
 
-        </tbody>
-      </Table>
+      {props.listOfWinners.length > 0 ?
+        <Table>
+          <thead>
+            <tr>
+              <th>Ganhador(a)</th>
+              <th>Prêmio</th>
+            </tr>
+          </thead>
+          <tbody>
+            {props.listOfWinners.map((item, index) => 
+              <tr key={index}>
+                <td>{item.participant}</td>
+                <td>{item.gift}</td>
+              </tr>
+            )}
+
+          </tbody>
+        </Table>
+        :
+        <div>Ainda não foi realizado nenhum sorteio</div>
+      }
     </Container>
   );
 }
