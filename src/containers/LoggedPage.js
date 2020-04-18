@@ -22,7 +22,7 @@ export const LoggedPage = () => {
     Id: null,
     giftId: 1,
     Gift:'',
-    GiftImg: '',
+    GiftImg: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQu594QwmV3ij1m3vEn7sp8aCKaC-zFBmA9_qyUtZeWJpMK98z1&usqp=CAU',
     Quantity: 1,
     Sponsor: '',
     SponsorImg: '',
@@ -95,7 +95,7 @@ export const LoggedPage = () => {
     event.preventDefault();
 
     if(!gifts.Gift || !gifts.Quantity || !gifts.Sponsor) {
-      message.warning('Preencha todos os campos');
+      message.warning('Preencha os campos obrigatórios');
     }
     else {
       const giftItem = {
@@ -165,7 +165,7 @@ export const LoggedPage = () => {
         return item.Id !== Participant.Id
       })
 
-      addNewWinner(Participant.Name, gift.Title)
+      addNewWinner(Participant.Name, gift.Gift)
       setParticipant({participantItems: newListParticipantes})
       setShowResultModal(true)
 
