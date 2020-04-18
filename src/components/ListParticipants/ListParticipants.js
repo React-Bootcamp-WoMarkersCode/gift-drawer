@@ -2,18 +2,17 @@ import React from 'react'
 import deleteButton from '../../assets/deleteButton.png'
 import styled from 'styled-components';
 
+export const Container = styled.div`
+  margin: 0px 9%;
+`
 export const Title = styled.h1`
   text-align: left;
-  margin-left: 9%;
 `
 export const Table = styled.table`
   display: flex;
   flex-direction: column;
-  margin: 30px 100px;
+  margin: 30px 0px;
   overflow-x: auto;
-  @media only screen and (max-width: 600px) {
-    margin: 30px 10px;
-  }
   thead tr th{
     width: 25vw;
     text-align: left;
@@ -22,9 +21,6 @@ export const Table = styled.table`
     border-bottom: solid 1px #e4e4e4;
   }
   tbody{
-    div{
-      margin: 30px;
-    }
     tr td{
     width: 25vw;
     text-align: left;
@@ -42,38 +38,37 @@ export const Table = styled.table`
 
 export const ListParticipants = (props) => {
   return (  
-    <>
+    <Container>
       <Title>Lista de participantes</Title>
-      <Table>
-        <thead>
-          <tr>
-            <th>Nome</th>
-            <th>Telefone</th>
-            <th>Email</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          { 
-            props.participantItems.length > 0 ? (
-              props.participantItems.map((item) => (
-                  <tr key={ item.Id }>
-                    <td>{ item.Name }</td>
-                    <td>{ item.Phone }</td>
-                    <td>{ item.Email }</td>
 
-                    <td className="table-list-actions">
-                      <img src={deleteButton} alt="delete icon" onClick={() => props.deleteParticipant(item.Id)}/>
-                    </td>
-                  </tr>
-                )
-              )
-            ) : (
-              <div>Não há participantes cadastrados</div>
-            )
-          }
-        </tbody>
-      </Table>
-    </>
+      {props.participantItems.length > 0 ? 
+        <Table>
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Telefone</th>
+              <th>Email</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {props.participantItems.map((item) => (
+              <tr key={ item.Id }>
+                <td>{ item.Name }</td>
+                <td>{ item.Phone }</td>
+                <td>{ item.Email }</td>
+
+                <td className="table-list-actions">
+                  <img src={deleteButton} alt="delete icon" onClick={() => props.deleteParticipant(item.Id)}/>
+                </td>
+              </tr>
+            ))} 
+
+          </tbody>
+        </Table>
+      :
+        <div>Não há participantes cadastrados</div>
+      }
+    </Container>
   );
 }

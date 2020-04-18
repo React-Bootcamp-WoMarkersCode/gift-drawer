@@ -31,27 +31,29 @@ export const ListOfGifts = (props) => {
   return (
     <Container>
       <h1>Lista de Brindes</h1>
-      <span>* Clique em um brinde para realizar o sorteio</span>
-      <StyledListOfGifts>
+
       {props.listOfGifts.length > 0 ? 
         <>
-          {props.listOfGifts.map((item) =>
-            <Gift
-              key={item.Id}
-              imgUrl={item.GiftImg}
-              title={item.Gift}
-              quantity={item.Quantity}
-              sponsor={item.Sponsor}
-              imgSponsorUrl={item.SponsorImg}
-              showModal={props.showModal}
-              onClick={() => props.onClick(item)}
-            />
-          )}
+          <span>* Clique em um brinde para realizar o sorteio</span>
+          <StyledListOfGifts>
+            {props.listOfGifts.map((item) =>
+              <Gift
+                key={item.Id}
+                imgUrl={item.GiftImg}
+                title={item.Gift}
+                quantity={item.Quantity}
+                sponsor={item.Sponsor}
+                imgSponsorUrl={item.SponsorImg}
+                showModal={() => props.showModal}
+                onClick={() => props.onClick(item)}
+              />
+            )}
+          </StyledListOfGifts>
         </>
         :
         <p>Não há brindes cadastrados</p>
       }
-      </StyledListOfGifts>
+
     </Container>
   );
 }
