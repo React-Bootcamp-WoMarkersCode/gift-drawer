@@ -43,7 +43,7 @@ export const ListOfGifts = (props) => {
               quantity={item.Quantity}
               sponsor={item.Sponsor}
               imgSponsorUrl={item.SponsorImg}
-              showModal={props.showModal}
+              showModal={() => props.showModal}
               onClick={() => props.onClick(item)}
             />
           )}
