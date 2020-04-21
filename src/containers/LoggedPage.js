@@ -15,7 +15,13 @@ export const LoggedPage = () => {
     Email: '',
     Status: false,
     participantItem: {},
-    participantItems: [],
+    participantItems: [{
+      Id: 1,
+      participantId: 1,
+      Name: 'Ana Paula',
+      Phone: '11 - 11111111',
+      Email: 'anapaula@email.com',
+    }],
   })
 
   const [gifts, setGifts] = useState({
@@ -164,14 +170,10 @@ export const LoggedPage = () => {
       const newListParticipantes = participant.participantItems.filter(function(item) {
         return item.Id !== Participant.Id
       })
-
       addNewWinner(Participant.Name, gift.Gift)
       setParticipant({participantItems: newListParticipantes})
       setShowResultModal(true)
-
-      setTimeout(() => {
-        updateListOfGifts(gift)
-      }, 500)
+      setTimeout(() => updateListOfGifts(gift), 500);
     }
     else {
       message.error('Não há participantes cadastrados')
@@ -197,6 +199,7 @@ export const LoggedPage = () => {
     })
     setGifts({giftItems: newListGifts})
   }
+
 
   return (
     <>

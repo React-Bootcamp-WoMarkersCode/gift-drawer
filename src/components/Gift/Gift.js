@@ -22,7 +22,7 @@ export const StyledGift = styled.div`
     transition: .5s ease;
     opacity: 0;
     position: absolute;
-    top: 40%;
+    top: 37%;
     left: 50%;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
@@ -45,7 +45,7 @@ export const StyledGift = styled.div`
 
   label {
     display: flex;
-    justify-content: left;
+    justify-content: center;
     box-sizing: border-box;
     width: 100%;
     padding: 20px 0;
@@ -64,10 +64,10 @@ const Gift = (props) => {
       key={props.id}
       onClick={props.showModal}
     >
-      <img src={props.imgUrl} alt='Imagem do brinde' onClick={props.onClick} style={{ width:'100%'}}/>
+      <img src={props.imgUrl} alt='Imagem do brinde'/>
       <div className="middle">
-        <div className="text">
-          Clique para sortear esse brinde!
+        <div className="text" onClick={props.onClick}>
+          Sortear esse brinde!
         </div>
       </div>
       <label>{props.title}</label>
