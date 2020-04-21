@@ -1,4 +1,4 @@
-import React, {useState, useEffect }from 'react';
+import React, {useState }from 'react';
 import { Modal, Button } from 'react-bootstrap';
 
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -15,7 +15,6 @@ export const ModalBootstrap = styled(Modal)`
     max-width: 500px;
   }
 `
-
 export const Counter = styled.div`
   height: 420px;
   display: flex;
@@ -27,21 +26,18 @@ export const Counter = styled.div`
     font-weight: bold;
   }
 `
-const ResultModal = ({ show, hideModal, winnerName }) => {
-  const [counterNumber, setCounterNumber] = useState(3);
 
-  useEffect(() => {
-    CountDown()
-  },[counterNumber])
+const ResultModal = ({ show, hideModal, winnerName }) => {
+  const [counterNumber, setCountNumber] = useState(3)
 
   const CountDown = () => {
-    if(counterNumber > 0){
-      setTimeout(() => setCounterNumber(counterNumber - 1), 1000)
-    }
+    setTimeout(() => setCountNumber(2), 1000 )
+    setTimeout(() => setCountNumber(1), 2000 )
+    setTimeout(() => setCountNumber(0), 3000 )  
   }
 
   return (
-    <ModalBootstrap show={show} onHide={hideModal} className='modal-winner' onEntering={CountDown}>
+    <ModalBootstrap show={show} onHide={hideModal} className='modal-winner' onEnter={CountDown} >
 
         {counterNumber > 0 ?
           <Modal.Body className='modal-result-body scroller'>

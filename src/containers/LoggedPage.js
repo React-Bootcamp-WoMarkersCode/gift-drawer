@@ -173,7 +173,7 @@ export const LoggedPage = () => {
       addNewWinner(Participant.Name, gift.Gift)
       setParticipant({participantItems: newListParticipantes})
       setShowResultModal(true)
-      setTimeout(() => updateListOfGifts(gift), 500);
+      setTimeout(() => updateListOfGifts(gift), 1000);
     }
     else {
       message.error('Não há participantes cadastrados')
@@ -199,7 +199,6 @@ export const LoggedPage = () => {
     })
     setGifts({giftItems: newListGifts})
   }
-
 
   return (
     <>
