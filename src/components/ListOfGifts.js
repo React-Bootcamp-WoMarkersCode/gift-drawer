@@ -34,7 +34,6 @@ export const ListOfGifts = (props) => {
 
       {props.listOfGifts.length > 0 ? 
         <>
-          <span>* Clique em um brinde para realizar o sorteio</span>
           <StyledListOfGifts>
             {props.listOfGifts.map((item) =>
               <Gift
