@@ -75,6 +75,14 @@ export const LoggedPage = () => {
   const [visible, setVisible] = useState(false)
   const [showResultModal, setShowResultModal] = useState(false);
 
+  const [counterNumber, setCountNumber] = useState(3)
+
+  const CountDown = () => {
+    setTimeout(() => setCountNumber(2), 1000 )
+    setTimeout(() => setCountNumber(1), 2000 )
+    setTimeout(() => setCountNumber(0), 3000 )
+  }
+
   const addParticipant = (event) => {
     event.preventDefault();
     if(!participant.Name || !participant.Phone || !participant.Email ) {
@@ -173,7 +181,8 @@ export const LoggedPage = () => {
       addNewWinner(Participant.Name, gift.Gift)
       setParticipant({participantItems: newListParticipantes})
       setShowResultModal(true)
-      setTimeout(() => updateListOfGifts(gift), 1000);
+      CountDown()
+      setTimeout(() => updateListOfGifts(gift), 500);
     }
     else {
       message.error('Não há participantes cadastrados')
@@ -231,9 +240,13 @@ export const LoggedPage = () => {
             listOfGifts={gifts.giftItems}
             show={showResultModal}
             showModal={showResultModal}
-            hideModal={() => setShowResultModal(false)}
+            hideModal={() => {
+              setShowResultModal(false)
+              setCountNumber(3)
+            }}
             onClick={SortParticipant}
             winnerName={winner.winnerItem.participant}
+            counterNumber={counterNumber}
 
             Gift={gifts.Gift}
             GiftImg={gifts.GiftImg}
