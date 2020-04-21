@@ -5,6 +5,7 @@ import NewRegister from '../components/NewRegister'
 import { ParticipantsPage } from './ParticipantsPage'
 import { GiftsPage } from './GiftsPage'
 import { LoggedPage } from '../containers/LoggedPage'
+import { LandingPage } from '../containers/LandingPage'
 
 export default function Routes() {
     return (
@@ -16,6 +17,7 @@ export default function Routes() {
                 <Route path="/logged" exact component={LoggedPage} />
                 <Route path="/logged/participants" exact component={ParticipantsPage} />
                 <Route path="/logged/gifts" exact component={GiftsPage} />
+                <Route path="/landing" exact component={LandingPage} />
             </Switch>
         </BrowserRouter>
     )
