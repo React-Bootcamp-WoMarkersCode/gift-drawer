@@ -213,8 +213,12 @@ export const LoggedPage = () => {
   return (
     <>
       <MainHeader />
-      <Tutorial />
+
       <Switch>
+        <Route exact path='/logged'>
+          <Tutorial />
+        </Route>
+
         <Route path='/logged/participants' >
           <ParticipantsPage
             showModal={() => setVisible(true)}
