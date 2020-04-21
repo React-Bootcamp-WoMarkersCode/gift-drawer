@@ -58,8 +58,11 @@ export const Header = styled.div`
 export const MainHeader = () => {
   return(
     <Header>
-      <img src={logo} className='logoFull' alt='logo'/>
-      <img src={logoSingle} className='logoSingle' alt='logo'/>
+      <Link  to={'/'}>
+        <img src={logo} className='logoFull' alt='logo'/>
+        <img src={logoSingle} className='logoSingle' alt='logo'/>
+      </Link>
+
 
       <div>
         <Link to={'/logged/gifts/list'}>brindes</Link>
