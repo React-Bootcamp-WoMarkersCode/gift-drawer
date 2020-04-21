@@ -2,33 +2,60 @@ import React from  'react';
 import styled from 'styled-components';
 
 export const StyledGift = styled.div`
+  cursor: pointer;
+  position: relative;
 
-cursor:pointer;
-width: 100%;
-display: flex;
-flex-direction: column;
-
-img {
-  height: 300px;
-  object-fit: cover;
-  width: 100%;
-  border-radius: 10px;
-  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.13);
-}
-
-label {
   display: flex;
-  justify-content: left;
-  box-sizing: border-box;
-  width: 100%;
-  padding: 20px 0;
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 20px;
-  line-height: 24px;
-  overflow-wrap: break-word;
-}
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  img {
+    opacity: 1;
+    display: block;
+    width: 250px;
+    height: 250px;
+    transition: .5s ease;
+    backface-visibility: hidden;
+  }
+  .middle {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  &:hover img{
+    opacity: 0.3;
+  }
+  &:hover .middle{
+    opacity: 1;
+  }
+  .text {
+    background-color: #9e9e9e;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 16px;
+  }
+
+  label {
+    display: flex;
+    justify-content: left;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 20px 0;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 24px;
+    overflow-wrap: break-word;
+  }
 `
 const Gift = (props) => {
   return (
@@ -37,7 +64,12 @@ const Gift = (props) => {
       key={props.id}
       onClick={props.showModal}
     >
-      <img src={props.imgUrl} alt='Imagem do brinde' onClick={props.onClick}/>
+      <img src={props.imgUrl} alt='Imagem do brinde' onClick={props.onClick} style={{ width:'100%'}}/>
+      <div className="middle">
+        <div className="text">
+          Clique para sortear esse brinde!
+        </div>
+      </div>
       <label>{props.title}</label>
     </StyledGift>
   );
