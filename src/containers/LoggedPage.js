@@ -2,6 +2,7 @@ import React, { useState }  from 'react';
 import { ParticipantsPage } from './ParticipantsPage'
 import { GiftsPage } from './GiftsPage'
 import { WinnersPage } from './WinnersPage'
+import { Tutorial } from '../components/Tutorial'
 import { Switch, Route } from 'react-router-dom'
 import { MainHeader } from '../components/Header/Header'
 import { message } from 'antd'
@@ -212,6 +213,7 @@ export const LoggedPage = () => {
   return (
     <>
       <MainHeader />
+      <Tutorial />
       <Switch>
         <Route path='/logged/participants' >
           <ParticipantsPage
