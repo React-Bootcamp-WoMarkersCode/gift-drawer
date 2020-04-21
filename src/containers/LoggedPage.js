@@ -248,7 +248,7 @@ export const LoggedPage = () => {
             showModal={showResultModal}
             hideModal={() => {
               setShowResultModal(false)
-              setCountNumber(3)
+              setTimeout(() => setCountNumber(3), 500)
             }}
             onClick={SortParticipant}
             winnerName={winner.winnerItem.participant}
