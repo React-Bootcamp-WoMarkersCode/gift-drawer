@@ -1,4 +1,4 @@
-import React, {useState }from 'react';
+import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
 
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -27,17 +27,9 @@ export const Counter = styled.div`
   }
 `
 
-const ResultModal = ({ show, hideModal, winnerName }) => {
-  const [counterNumber, setCountNumber] = useState(3)
-
-  const CountDown = () => {
-    setTimeout(() => setCountNumber(2), 1000 )
-    setTimeout(() => setCountNumber(1), 2000 )
-    setTimeout(() => setCountNumber(0), 3000 )  
-  }
-
+const ResultModal = ({ show, hideModal, winnerName, counterNumber }) => {
   return (
-    <ModalBootstrap show={show} onHide={hideModal} className='modal-winner' onEnter={CountDown} >
+    <ModalBootstrap show={show} onHide={hideModal} className='modal-winner'>
 
         {counterNumber > 0 ?
           <Modal.Body className='modal-result-body scroller'>

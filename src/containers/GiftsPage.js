@@ -33,6 +33,7 @@ export function GiftsPage(props){
     show,
     hideModal,
     winnerName,
+    counterNumber,
   } = props
 
   return(
@@ -65,6 +66,7 @@ export function GiftsPage(props){
             show={show}
             hideModal={hideModal}
             winnerName={winnerName}
+            counterNumber={counterNumber}
           />
         </Route>
       </Switch>
