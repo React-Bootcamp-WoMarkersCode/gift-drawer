@@ -12,7 +12,18 @@ import styled from 'styled-components';
 export const ModalBootstrap = styled(Modal)`
   padding: 0px;
   .modal-dialog{
-    max-width: 500px;
+    max-width: 50%;
+  }
+  .modal-result-body .Content{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 30px;
+    .trophy-img{
+      width: 100px;
+      height: auto;
+    }
   }
 `
 export const Counter = styled.div`
@@ -27,7 +38,7 @@ export const Counter = styled.div`
   }
 `
 
-const ResultModal = ({ show, hideModal, winnerName, counterNumber }) => {
+const ResultModal = ({ show, hideModal, winnerName, counterNumber, giftName, giftImg, sponsorName, sponsorImg}) => {
   return (
     <ModalBootstrap show={show} onHide={hideModal} className='modal-winner'>
 
@@ -41,9 +52,24 @@ const ResultModal = ({ show, hideModal, winnerName, counterNumber }) => {
           <>
             <Modal.Body className='modal-result-body scroller'>
               <img alt='close-icon' className='close-icon' src={close}  onClick={hideModal}/>
-              <h3>VENCEDORX</h3>
-              <img alt='trophy-img' className='trophy-img' src={trophy}/>
-              <p className='animate heartBeat infinite' >{winnerName}</p>
+
+              <div className='Content'>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+                  <img alt='gift image' src={giftImg} width='300px'/>
+                  <p>{giftName}</p>
+                </div>
+
+                <div>
+                  <p>Vencedxr:</p>
+                  <img alt='trophy-img' className='trophy-img' src={trophy}/>
+                  <p className='animate heartBeat infinite' >{winnerName}</p>
+                  
+                  <div style={{ display: 'flex', flexDirection: 'column'}}>
+                    <span>Patrocinador:</span>
+                    <img title={sponsorName} alt={sponsorName} src={sponsorImg} width='auto' height='40px'/>
+                  </div>
+                </div>
+              </div>
             
             <Modal.Footer className='modal-result-footer'>
               <Button className='button confirm-btn' variant='' onClick={hideModal}>
