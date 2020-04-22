@@ -8,6 +8,7 @@ import bolinha from '../../img/bolinha.png';
 import icGithub from '../../img/ic-github.svg';
 import icInstagram from '../../img/ic-instagram.svg';
 // import bg from '../../img/bg.png'
+import { Link, useHistory } from 'react-router-dom'
 
 const StyledLanding = styled.div`
     max-width: 1280px;
@@ -215,6 +216,7 @@ const StyledFooter = styled.div`
 `
 
 export const Landing = () => {
+    let history = useHistory();
     return ( 
         <>
             <StyledLanding>
@@ -227,8 +229,8 @@ export const Landing = () => {
                         <img src={amologo} alt="logo da amobrindes"/>
                     </div>
                     <div>
-                        <a href="#">cadastre-se</a>
-                        <StyledButton label="entrar" type="red"/>
+                        <Link to={'/login/new-register'}>cadastre-se</Link>
+                        <StyledButton label="entrar" type="red" onClick={() => history.push('login')}/>
                     </div>
                 </nav>
 
