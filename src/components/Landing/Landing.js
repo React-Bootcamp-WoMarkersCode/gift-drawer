@@ -235,8 +235,9 @@ export const Landing = () => {
                 </nav>
 
                 <section>
-                    <h1>Sorteio de brindes</h1>
-                    <p>Descubra como fazer sorteios de brindes em eventos de forma simples e gratuita com a <span>amobrindes</span></p>
+                    <h1>Amo brindes</h1>
+                    {/* Aqui eu colocaria 'amo brindes' tipo o logo mesmo */}
+                    <p>Descubra como sortear brindes de forma simples, divertida e gratuita! </p>
                 </section>
                 
             </StyledLanding>
@@ -245,18 +246,18 @@ export const Landing = () => {
                     <StyledMain>
                         <card>
                             <img src={bolinha}/>
-                            <h4>Gerenciamento simples das etapas do sorteio</h4>
-                            <p>Adicione participantes, cadastre os brindes que serão sorteados e crie rodadas de sorteio.</p>
+                            <h4>Gerenciamento simples do sorteio</h4>
+                            <p>Adicione participantes, cadastre brindes e crie rodadas de sorteio.</p>
                         </card>
                         <card>
                             <img src={bolinha}/>
-                            <h4>Mais visibilidade para os seus patrocinadores</h4>
-                            <p>Sabemos que visibilidade é muito importante para os patrocinadores do evento por isso inserimos um catinho especial para as marcas patrocinadoras.</p>
+                            <h4>Visibilidade para os patrocinadores</h4>
+                            <p>Sabemos como a visibilidade é muito importante para os patrocinadores do evento, por isso adicionamos um cantinho especial para as marcas patrocinadoras.</p>
                         </card>
                         <card>
                             <img src={bolinha}/>
                             <h4>Sorteios mais justos, dinâmicos e divertidos</h4>
-                            <p>Empolgue e surpreenda os participantes do sorteio. A cada rodada do sorteio de brindes os sortudos e seu respectivo brinde ficam registrados na aba 'ganhadores’.</p>
+                            <p>Empolgue e surpreenda os seus participantes. A cada rodada o sortudo e seu respectivo brinde ficam registrados na aba 'ganhadores’.</p>
                         </card>
                     </StyledMain>
                     <StyledAbout>
@@ -264,7 +265,7 @@ export const Landing = () => {
                             <img src={logowmc} alt='logo womakercode'/>
                         </card>
                         <card>
-                            <h3><span>amobrindes</span> é um projeto open source que nasceu como projeto final do React Bootcamp da comunidade WoMakersCode.
+                            <h3><span>amobrindes</span> é um projeto open source que nasceu do React Bootcamp, realizado pela WoMakersCode.
                             </h3>
                             <StyledButton label="Visite o nosso github" type="red"/>
                         </card>
@@ -277,13 +278,13 @@ export const Landing = () => {
                     <img src={logowmc} alt='logo womakercode'/>
                 </div>
                 <div>
-                    <p>Adicione os participantes através de uma tabela .csv</p>
+                    <p>Adicione os participantes manualmente ou importe uma tabela.</p>
                 </div>
             </StyledFeatures>
 
             <StyledFeatures>
                 <div>
-                    <p>Insira os brindes a serem sorteados e os logos dos patrocinadores</p>
+                    <p>Insira os brindes a serem sorteados e os respectivos patrocinadores.</p>
                 </div>
                 <div>
                     <img src={logowmc} alt='logo womakercode' />
@@ -295,7 +296,7 @@ export const Landing = () => {
                     <img src={logowmc} alt='logo womakercode'/>
                 </div>
                 <div>
-                    <p>Para criar uma rodada do sorteio escolha um brinde e clique em sortear. Simples assim.</p>
+                    <p>Para criar uma rodada de sorteio, escolha um brinde e clique em sortear. <br />Simples assim.</p>
                 </div>
             </StyledFeatures>
 
