@@ -40,24 +40,24 @@ export const LoggedPage = () => {
         Gift:'brinde 1',
         GiftImg: 'https://i.ibb.co/jJq261y/gift-img.png',
         Quantity: 1,
-        Sponsor: '',
-        SponsorImg: '',
+        Sponsor: 'WomakersCode',
+        SponsorImg: 'https://miro.medium.com/max/478/1*jriufqYKgJTW4DKrBizU5w.png',
       },
       {
         Id: 2,
         Gift:'Bicicleta praiana usada com cestinha',
         GiftImg: 'https://images.unsplash.com/photo-1565815146384-5e27ff130edc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80',
         Quantity: 1,
-        Sponsor: '',
-        SponsorImg: '',
+        Sponsor: 'WomakersCode',
+        SponsorImg: 'https://miro.medium.com/max/478/1*jriufqYKgJTW4DKrBizU5w.png',
       },
       {
         Id: 3,
         Gift:'brinde 3',
         GiftImg: 'https://i.ibb.co/jJq261y/gift-img.png',
         Quantity: 1,
-        Sponsor: '',
-        SponsorImg: '',
+        Sponsor: 'WomakersCode',
+        SponsorImg: 'https://miro.medium.com/max/478/1*jriufqYKgJTW4DKrBizU5w.png',
       },
     ],
   })
@@ -65,7 +65,10 @@ export const LoggedPage = () => {
   const [winner, setWinner] = useState({
     id: null,
     participant: '',
+    giftImg: '',
     gift: '',
+    sponsor: '',
+    sponsorImg: '',
     winnerItem: {},
     winnerItems: [],
   })
@@ -172,14 +175,13 @@ export const LoggedPage = () => {
   }
 
   const SortParticipant = (gift) => {
-
     if(participant.participantItems.length > 0){
       const index =  Math.floor(Math.random() * participant.participantItems.length);
       const Participant = participant.participantItems[index]
       const newListParticipantes = participant.participantItems.filter(function(item) {
         return item.Id !== Participant.Id
       })
-      addNewWinner(Participant.Name, gift.Gift)
+      addNewWinner(Participant.Name, gift)
       setParticipant({participantItems: newListParticipantes})
       setShowResultModal(true)
       CountDown()
@@ -194,7 +196,10 @@ export const LoggedPage = () => {
     const winnerItem = {
       id: winner.winnerItems.length + 1,
       participant: participant,
-      gift: gift,
+      giftImg: gift.GiftImg,
+      gift: gift.Gift,
+      sponsor: gift.Sponsor,
+      sponsorImg: gift.SponsorImg,
     }
     setWinner({
       ...winner,
@@ -251,8 +256,12 @@ export const LoggedPage = () => {
               setTimeout(() => setCountNumber(3), 500)
             }}
             onClick={SortParticipant}
-            winnerName={winner.winnerItem.participant}
             counterNumber={counterNumber}
+            winnerName={winner.winnerItem.participant}
+            giftName={winner.winnerItem.gift}
+            giftImg={winner.winnerItem.giftImg}
+            sponsorName={winner.winnerItem.sponsor}
+            sponsorImg={winner.winnerItem.sponsorImg}
 
             Gift={gifts.Gift}
             GiftImg={gifts.GiftImg}
