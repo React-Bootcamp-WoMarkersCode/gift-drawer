@@ -7,6 +7,7 @@ import logowmc from '../../img/logowmc.png';
 import bolinha from '../../img/bolinha.png';
 import icGithub from '../../img/ic-github.svg';
 import icInstagram from '../../img/ic-instagram.svg';
+import { Link } from 'react-router-dom'
 // import bg from '../../img/bg.png'
 
 const StyledLanding = styled.div`
@@ -228,7 +229,7 @@ export const Landing = () => {
                     </div>
                     <div>
                         <a href="#">cadastre-se</a>
-                        <StyledButton label="entrar" type="red"/>
+                        <Link to={'/logged/gifts/list'}><StyledButton label="entrar" type="red"/></Link>
                     </div>
                 </nav>
 
