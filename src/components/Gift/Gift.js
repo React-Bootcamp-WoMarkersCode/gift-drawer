@@ -7,22 +7,34 @@ export const StyledGift = styled.div`
 
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
+
+  .imgContainer {
+    width: 100%;
+    height: 280px;
+    overflow: hidden;
+    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.13);
+    border-radius: 10px;
+  }
 
   img {
     opacity: 1;
     display: block;
-    width: 250px;
-    height: 250px;
     transition: .5s ease;
     backface-visibility: hidden;
+    height: 100%;
+    width: 100%;
   }
+
+  .cover {
+    object-fit: cover;
+    
+  }
+ 
   .middle {
     transition: .5s ease;
     opacity: 0;
     position: absolute;
-    top: 37%;
+    top: 125px;
     left: 50%;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
@@ -35,25 +47,25 @@ export const StyledGift = styled.div`
     opacity: 1;
   }
   .text {
-    background-color: #9e9e9e;
+    background-color: #D33741;
     border-radius: 5px;
     color: white;
     font-size: 16px;
     font-weight: bold;
     padding: 16px;
+    text-align: center;
   }
 
   label {
     display: flex;
-    justify-content: center;
     box-sizing: border-box;
     width: 100%;
     padding: 20px 0;
     font-family: Montserrat;
     font-style: normal;
-    font-weight: bold;
+    font-weight: 500;
     font-size: 20px;
-    line-height: 24px;
+    line-height: 1.8rem;
     overflow-wrap: break-word;
   }
 `
@@ -64,12 +76,16 @@ const Gift = (props) => {
       key={props.id}
       onClick={props.showModal}
     >
-      <img src={props.imgUrl} alt='Imagem do brinde'/>
+      <div className="imgContainer">
+        <img className="cover" src={props.imgUrl} alt='Imagem do brinde'/>
+      </div>
+      
       <div className="middle">
         <div className="text" onClick={props.onClick}>
           Sortear esse brinde!
         </div>
       </div>
+
       <label>{props.title}</label>
     </StyledGift>
   );
