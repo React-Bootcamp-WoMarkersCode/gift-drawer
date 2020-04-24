@@ -3,7 +3,7 @@ import deleteButton from '../../assets/deleteButton.png'
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  margin: 0px 9%;
+  // margin: 0px 9%;
 `
 export const Title = styled.h1`
   text-align: left;
@@ -11,7 +11,7 @@ export const Title = styled.h1`
 export const Table = styled.table`
   display: flex;
   flex-direction: column;
-  margin: 30px 0px;
+  // margin: 30px 0px;
   overflow-x: auto;
   thead tr th{
     width: 25vw;

@@ -14,8 +14,7 @@ export const Menu = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  margin-right: 80px;
-  margin-bottom: 40px;
+  margin: 40px 0 40px 0;
   @media only screen and (max-width: 600px) {
     justify-content: center;
     margin-right: 0;

@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import peopleImg from '../assets/AddPeople.png'
-import giftImg from '../assets/AddGift.png'
-import sortImg from '../assets/Sort.png'
+import AddPeople from '../img/1add.png';
+import AddGift from '../img/2gifts.png';
+import SortPeople from '../img/3sort.png';
 
 
 export const Div = styled.div`
@@ -31,17 +31,17 @@ export const Tutorial = () => {
   return(
     <Div>
       <div>
-        <img src={peopleImg} alt='logo'/>
+        <img src={AddPeople} alt='logo'/>
         <span>Adicione os participantes manualmente ou importe uma tabela.</span>
       </div>
 
       <div>
-        <img src={giftImg} alt='logo'/>
+        <img src={AddGift} alt='logo'/>
         <span>Insira os brindes a serem sorteados e os respectivos patrocinadores</span>
       </div>
 
       <div>
-        <img src={sortImg} alt='logo'/>
+        <img src={SortPeople} alt='logo'/>
         <span>Para criar uma rodada de sorteio, escolha um brinde e clique em sortear. <br />Simples assim.</span>
       </div>
     </Div>
