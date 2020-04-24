@@ -136,7 +136,7 @@ export default function Login() {
             </FormItem>
 
 
-            <StyledButton label="Entrar" type="red" width="100%" height="50px" />
+            <StyledButton label="Entrar" type="red" width="100%" height="50px" onClick={() => history.push('/logged')} />
             <FormItem style={{ paddingBottom: "25px", paddingTop: "25px" }}>
               <Row>
                 <Label label="Ainda não tem uma conta?  " fontSize="15px" color="black" />
