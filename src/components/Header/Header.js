@@ -10,8 +10,8 @@ export const Header = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 0px 80px;
   box-shadow: 0px 7px 6px -5px rgb(212, 212, 212);
+  padding: 0 80px 0 40px;
   a{
     color: #552B9A;
     font-weight: bold;
@@ -31,6 +31,9 @@ export const Header = styled.div`
       left: 50%;
       top: 30px;
       transform: translateX(-50%);
+      img {
+        padding-left: 0px;
+      }
     }
   }
   .logoFull{

@@ -1,10 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { StyledButton } from '../Button/Button'
-// import amologo from '../../img/amologo.svg';
 import amologotipo from '../../img/amologotipo.svg';
 import logowmc from '../../img/logowmc.png';
-import bolinha from '../../img/bolinha.png';
 import icGithub from '../../img/ic-github.svg';
 import icInstagram from '../../img/ic-instagram.svg';
 import AddPeople from '../../img/1add.png';
