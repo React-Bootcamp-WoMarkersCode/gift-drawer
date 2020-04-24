@@ -10,12 +10,18 @@ export const Menu = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  margin-right: 40px;
+  margin: 40px 0 40px 0;
   a{
-    margin-right: 40px;
+    margin-left: 40px;
     color: #552B9A;
     font-size: 17px;
-  }
+    }
+  @media only screen and (max-width: 600px) {
+    display: flex;
+    justify-content: center;
+    margin: 40px;
+    margin-left: 0px;
+    }
 `
 export function GiftsPage(props){
 
