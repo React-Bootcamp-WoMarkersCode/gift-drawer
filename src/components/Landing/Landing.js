@@ -1,25 +1,37 @@
 import React from 'react';
 import styled from 'styled-components';
 import { StyledButton } from '../Button/Button'
-import amologo from '../../img/amologo.svg';
+// import amologo from '../../img/amologo.svg';
 import amologotipo from '../../img/amologotipo.svg';
 import logowmc from '../../img/logowmc.png';
 import bolinha from '../../img/bolinha.png';
 import icGithub from '../../img/ic-github.svg';
 import icInstagram from '../../img/ic-instagram.svg';
-import { Link } from 'react-router-dom'
-// import bg from '../../img/bg.png'
+import AddPeople from '../../img/1add.png';
+import AddGift from '../../img/2gifts.png';
+import SortPeople from '../../img/3sort.png';
+import Card1 from '../../img/card1.png';
+import Card2 from '../../img/card2.png';
+import Card3 from '../../img/card3.png';
+import BackgroundLegal from '../../img/bg.png'
+import { Link, useHistory } from 'react-router-dom'
+import { HashLink } from 'react-router-hash-link';
 
 const StyledLanding = styled.div`
+    box-sizing: border-box;
     max-width: 1280px;
     width: 90%;
     margin: 0 auto;
         nav{
+            width: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             height: 120px;
             div{
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
                 a {
                     padding-right: 20px;
                     color: #552B9A;
@@ -36,19 +48,23 @@ const StyledLanding = styled.div`
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
-            width: 60%;
+            align-items: flex-start;
+            // width: 60%;
             height: 80vh;
             margin: 0 auto;
+                img {
+                    width: 150%;
+                    padding-bottom: 100px;
+                }
                 h1{
+                    width: 80%;
                     font-family: Montserrat;
                     font-style: normal;
-                    font-weight: 900;
-                    font-size: 120px;
-                    line-height: 90%;
-                    text-align: center;
-                    letter-spacing: -0.03em;
-                    text-transform: uppercase;
+                    font-size: 400%;
+                    line-height: 140%;
+                    text-align: left;
+                    // letter-spacing: -0.03em;
+                    // text-transform: uppercase;
                     color: #552B9A;
                 }
                 p{
@@ -67,10 +83,18 @@ const StyledLanding = styled.div`
         }
 
     @media (max-width: 768px) {
+        nav {
+            div {
+                img {
+                    width: 180px;
+                }
+            }
+        }
         section {
             width: 100%;
+            height: 60vh;
                 h1{
-                    font-size: 3.6rem;
+                    font-size: 2rem;
                     text-align: left;
                 }
                 p{
@@ -82,12 +106,18 @@ const StyledLanding = styled.div`
 `
 
 const StyledSection = styled.div`
-    background-color: #552B9A;
-    padding: 200px 0;
+    background-image: url(${BackgroundLegal});
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+    padding: 300px 0 200px 0;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: -150px;
+       
 `
 
 const StyledMainContainer = styled.div`
@@ -175,7 +205,7 @@ const StyledAbout = styled.div`
 const StyledFeatures = styled.div`
     max-width: 1280px;
     width: 90%;
-    margin: 100px auto;
+    margin: 10px auto;
     display: flex;
     
         div {
@@ -188,7 +218,7 @@ const StyledFeatures = styled.div`
             font-weight: normal;
             font-size: 30px;
             line-height: 160%;
-            padding: 100px;
+            padding: 10px;
         }
 
     @media (max-width: 1024px) {
@@ -198,13 +228,14 @@ const StyledFeatures = styled.div`
             width: 100%;
             padding: 40px;
         }
+
     }
 `
 
 const StyledFooter = styled.div`
     max-width: 1280px;
     width: 90%;
-    margin: 60px auto;
+    margin: 120px auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -216,26 +247,23 @@ const StyledFooter = styled.div`
 `
 
 export const Landing = () => {
+    let history = useHistory();
     return ( 
         <>
             <StyledLanding>
-                <nav>
+                <nav id= "start">
                     <div>
-                        <a href="#">sobre</a>
-                        <a href="#">github</a>
+                        <img src={amologotipo} alt="logo da amobrindes"/>
                     </div>
                     <div>
-                        <img src={amologo} alt="logo da amobrindes"/>
-                    </div>
-                    <div>
-                        <a href="#">cadastre-se</a>
-                        <Link to={'/logged/gifts/list'}><StyledButton label="entrar" type="red"/></Link>
+                        <Link to={'/login/new-register'}>cadastre-se</Link>
+                        <StyledButton label="entrar" type="red" onClick={() => history.push('login')}/>
                     </div>
                 </nav>
 
                 <section>
-                    <h1>Sorteio de brindes</h1>
-                    <p>Descubra como fazer sorteios de brindes em eventos de forma simples e gratuita com a <span>amobrindes</span></p>
+                    <h1>Descubra como sortear brindes de forma simples, divertida e gratuita!</h1>
+                    <p> </p>
                 </section>
                 
             </StyledLanding>
@@ -243,19 +271,19 @@ export const Landing = () => {
                 <StyledMainContainer>
                     <StyledMain>
                         <card>
-                            <img src={bolinha}/>
-                            <h4>Gerenciamento simples das etapas do sorteio</h4>
-                            <p>Adicione participantes, cadastre os brindes que serão sorteados e crie rodadas de sorteio.</p>
+                            <img src={Card1}/>
+                            <h4>Gerenciamento simples do sorteio</h4>
+                            <p>Adicione participantes, cadastre brindes e crie rodadas de sorteio.</p>
                         </card>
                         <card>
-                            <img src={bolinha}/>
-                            <h4>Mais visibilidade para os seus patrocinadores</h4>
-                            <p>Sabemos que visibilidade é muito importante para os patrocinadores do evento por isso inserimos um catinho especial para as marcas patrocinadoras.</p>
+                            <img src={Card2}/>
+                            <h4>Visibilidade para os patrocinadores</h4>
+                            <p>Sabemos como a visibilidade é muito importante para os patrocinadores do evento, por isso adicionamos um cantinho especial para as marcas patrocinadoras.</p>
                         </card>
                         <card>
-                            <img src={bolinha}/>
+                            <img src={Card3}/>
                             <h4>Sorteios mais justos, dinâmicos e divertidos</h4>
-                            <p>Empolgue e surpreenda os participantes do sorteio. A cada rodada do sorteio de brindes os sortudos e seu respectivo brinde ficam registrados na aba 'ganhadores’.</p>
+                            <p>Empolgue e surpreenda os seus participantes. A cada rodada o sortudo e seu respectivo brinde ficam registrados na aba 'ganhadores’.</p>
                         </card>
                     </StyledMain>
                     <StyledAbout>
@@ -263,7 +291,7 @@ export const Landing = () => {
                             <img src={logowmc} alt='logo womakercode'/>
                         </card>
                         <card>
-                            <h3><span>amobrindes</span> é um projeto open source que nasceu como projeto final do React Bootcamp da comunidade WoMakersCode.
+                            <h3><span>amobrindes</span> é um projeto open source que nasceu do React Bootcamp, realizado pela WoMakersCode.
                             </h3>
                             <StyledButton label="Visite o nosso github" type="red"/>
                         </card>
@@ -273,36 +301,36 @@ export const Landing = () => {
 
             <StyledFeatures>
                 <div>
-                    <img src={logowmc} alt='logo womakercode'/>
+                    <img src={AddPeople} alt='logo womakercode'/>
                 </div>
                 <div>
-                    <p>Adicione os participantes através de uma tabela .csv</p>
-                </div>
-            </StyledFeatures>
-
-            <StyledFeatures>
-                <div>
-                    <p>Insira os brindes a serem sorteados e os logos dos patrocinadores</p>
-                </div>
-                <div>
-                    <img src={logowmc} alt='logo womakercode' />
+                    <p>Adicione os participantes manualmente ou importe uma tabela.</p>
                 </div>
             </StyledFeatures>
 
             <StyledFeatures>
                 <div>
-                    <img src={logowmc} alt='logo womakercode'/>
+                    <p>Insira os brindes a serem sorteados e os respectivos patrocinadores.</p>
                 </div>
                 <div>
-                    <p>Para criar uma rodada do sorteio escolha um brinde e clique em sortear. Simples assim.</p>
+                    <img src={AddGift} alt='logo womakercode' />
+                </div>
+            </StyledFeatures>
+
+            <StyledFeatures>
+                <div>
+                    <img src={SortPeople} alt='logo womakercode'/>
+                </div>
+                <div id="changeOrder">
+                    <p>Para criar uma rodada de sorteio, escolha um brinde e clique em sortear. <br />Simples assim.</p>
                 </div>
             </StyledFeatures>
 
             <StyledFooter>
-                <img src={amologotipo} alt="logotipo"/>
+                 <HashLink to={'/#start'}><img src={amologotipo} alt="logotipo"/></HashLink>
                 <div>
-                    <a href="#"><img src={icGithub}/></a>
-                    <a href="#"><img src={icInstagram}/></a>
+                    <a href="https://github.com/React-Bootcamp-WoMarkersCode/gift-drawer"><img src={icGithub}/></a>
+                    <a href="http://instagram.com/amobrindesapp"><img src={icInstagram}/></a>
                 </div>
             </StyledFooter>
         </>

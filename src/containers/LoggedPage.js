@@ -2,6 +2,7 @@ import React, { useState }  from 'react';
 import { ParticipantsPage } from './ParticipantsPage'
 import { GiftsPage } from './GiftsPage'
 import { WinnersPage } from './WinnersPage'
+import { Tutorial } from '../components/Tutorial'
 import { Switch, Route } from 'react-router-dom'
 import { MainHeader } from '../components/Header/Header'
 import { message } from 'antd'
@@ -39,24 +40,24 @@ export const LoggedPage = () => {
         Gift:'brinde 1',
         GiftImg: 'https://i.ibb.co/jJq261y/gift-img.png',
         Quantity: 1,
-        Sponsor: '',
-        SponsorImg: '',
+        Sponsor: 'WomakersCode',
+        SponsorImg: 'https://miro.medium.com/max/478/1*jriufqYKgJTW4DKrBizU5w.png',
       },
       {
         Id: 2,
         Gift:'Bicicleta praiana usada com cestinha',
         GiftImg: 'https://images.unsplash.com/photo-1565815146384-5e27ff130edc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80',
         Quantity: 1,
-        Sponsor: '',
-        SponsorImg: '',
+        Sponsor: 'WomakersCode',
+        SponsorImg: 'https://miro.medium.com/max/478/1*jriufqYKgJTW4DKrBizU5w.png',
       },
       {
         Id: 3,
         Gift:'brinde 3',
         GiftImg: 'https://i.ibb.co/jJq261y/gift-img.png',
         Quantity: 1,
-        Sponsor: '',
-        SponsorImg: '',
+        Sponsor: 'WomakersCode',
+        SponsorImg: 'https://miro.medium.com/max/478/1*jriufqYKgJTW4DKrBizU5w.png',
       },
     ],
   })
@@ -64,7 +65,10 @@ export const LoggedPage = () => {
   const [winner, setWinner] = useState({
     id: null,
     participant: '',
+    giftImg: '',
     gift: '',
+    sponsor: '',
+    sponsorImg: '',
     winnerItem: {},
     winnerItems: [],
   })
@@ -74,6 +78,14 @@ export const LoggedPage = () => {
   const [disabled, setDisabled] = useState(true)
   const [visible, setVisible] = useState(false)
   const [showResultModal, setShowResultModal] = useState(false);
+
+  const [counterNumber, setCountNumber] = useState(3)
+
+  const CountDown = () => {
+    setTimeout(() => setCountNumber(2), 1000 )
+    setTimeout(() => setCountNumber(1), 2000 )
+    setTimeout(() => setCountNumber(0), 3000 )
+  }
 
   const addParticipant = (event) => {
     event.preventDefault();
@@ -163,17 +175,17 @@ export const LoggedPage = () => {
   }
 
   const SortParticipant = (gift) => {
-
     if(participant.participantItems.length > 0){
       const index =  Math.floor(Math.random() * participant.participantItems.length);
       const Participant = participant.participantItems[index]
       const newListParticipantes = participant.participantItems.filter(function(item) {
         return item.Id !== Participant.Id
       })
-      addNewWinner(Participant.Name, gift.Gift)
+      addNewWinner(Participant.Name, gift)
       setParticipant({participantItems: newListParticipantes})
       setShowResultModal(true)
-      setTimeout(() => updateListOfGifts(gift), 1000);
+      CountDown()
+      setTimeout(() => updateListOfGifts(gift), 500);
     }
     else {
       message.error('Não há participantes cadastrados')
@@ -184,7 +196,10 @@ export const LoggedPage = () => {
     const winnerItem = {
       id: winner.winnerItems.length + 1,
       participant: participant,
-      gift: gift,
+      giftImg: gift.GiftImg,
+      gift: gift.Gift,
+      sponsor: gift.Sponsor,
+      sponsorImg: gift.SponsorImg,
     }
     setWinner({
       ...winner,
@@ -203,7 +218,12 @@ export const LoggedPage = () => {
   return (
     <>
       <MainHeader />
+
       <Switch>
+        <Route exact path='/logged'>
+          <Tutorial />
+        </Route>
+
         <Route path='/logged/participants' >
           <ParticipantsPage
             showModal={() => setVisible(true)}
@@ -231,9 +251,17 @@ export const LoggedPage = () => {
             listOfGifts={gifts.giftItems}
             show={showResultModal}
             showModal={showResultModal}
-            hideModal={() => setShowResultModal(false)}
+            hideModal={() => {
+              setShowResultModal(false)
+              setTimeout(() => setCountNumber(3), 500)
+            }}
             onClick={SortParticipant}
+            counterNumber={counterNumber}
             winnerName={winner.winnerItem.participant}
+            giftName={winner.winnerItem.gift}
+            giftImg={winner.winnerItem.giftImg}
+            sponsorName={winner.winnerItem.sponsor}
+            sponsorImg={winner.winnerItem.sponsorImg}
 
             Gift={gifts.Gift}
             GiftImg={gifts.GiftImg}

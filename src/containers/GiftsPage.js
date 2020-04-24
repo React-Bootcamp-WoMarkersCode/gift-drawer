@@ -33,6 +33,11 @@ export function GiftsPage(props){
     show,
     hideModal,
     winnerName,
+    counterNumber,
+    giftName,
+    giftImg,
+    sponsorName,
+    sponsorImg,
   } = props
 
   return(
@@ -65,6 +70,11 @@ export function GiftsPage(props){
             show={show}
             hideModal={hideModal}
             winnerName={winnerName}
+            counterNumber={counterNumber}
+            giftName={giftName}
+            giftImg={giftImg}
+            sponsorName={sponsorName}
+            sponsorImg={sponsorImg}
           />
         </Route>
       </Switch>
