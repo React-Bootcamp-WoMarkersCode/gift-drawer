@@ -7,7 +7,7 @@ import { Wrapper } from '../Wrapper/Wrapper'
 import styled from 'styled-components';
 import { useFormik } from 'formik';
 import MsgError from '../MsgError/MsgError'
-import validate from '../ValidationForm'
+import validate from '../ValidationLogin'
 import { useHistory } from "react-router-dom";
 
 const Containter = styled.div`
@@ -77,6 +77,9 @@ export default function Login() {
       password: '',
     },
     validate,
+    onSubmit: values => {
+      alert(JSON.stringify(values, null, 2));
+    }
   });
 
   return (
@@ -133,7 +136,7 @@ export default function Login() {
             </FormItem>
 
 
-            <StyledButton label="Entrar" type="red" width="100%" height="50px" onClick={() => history.push('logged')} />
+            <StyledButton label="Entrar" type="red" width="100%" height="50px" />
             <FormItem style={{ paddingBottom: "25px", paddingTop: "25px" }}>
               <Row>
                 <Label label="Ainda não tem uma conta?  " fontSize="15px" color="black" />

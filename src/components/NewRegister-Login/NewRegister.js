@@ -4,6 +4,9 @@ import { Wrapper } from '../Wrapper/Wrapper'
 import Label from '../Label/Label';
 import { StyledButton } from '../Button/Button';
 import Link from '../Link/Link';
+import { useFormik } from 'formik';
+import MsgError from '../MsgError/MsgError'
+import validate from '../ValidationForm'
 import styled from 'styled-components';
 
 const Containter = styled.div`
@@ -55,22 +58,38 @@ const Row = styled.div`
 
 export default function NewRegister() {
 
+  const formik = useFormik({
+    initialValues: {
+      name: '',
+      email: '',
+      password: '',
+    },
+    validate,
+    onSubmit: values => {
+      console.log(JSON.stringify(values, null, 2));
+    }
+  });
+
+
   return (
     <>
       <Containter>
         <Panel>
-          <Form>
+          <Form onSubmit={formik.handleSubmit}>
             <FormItem>
               <Title text="Cadastro" color="black" fontSize="32px" paddingTop="17px" paddingBottom="23px" />
-           
+
               <Wrapper
                 textLabel='Seu nome'
                 type="text"
                 name="name"
                 placeholder="Nome Sobrenome"
                 className="name"
+                onChange={formik.handleChange}
+                value={formik.values.name}
                 required
               />
+              {formik.errors.name ? <MsgError text={formik.errors.name} /> : null}
             </FormItem>
 
             <FormItem>
@@ -80,10 +99,13 @@ export default function NewRegister() {
                 name="email"
                 placeholder="nome@email.com"
                 className="email"
+                onChange={formik.handleChange}
+                value={formik.values.email}
                 required
                 width="400px"
                 height="40px"
               />
+              {formik.errors.email ? <MsgError text={formik.errors.email} /> : null}
             </FormItem>
 
             <FormItem>
@@ -93,10 +115,13 @@ export default function NewRegister() {
                 name="senha"
                 placeholder="••••••••••"
                 className="password"
+                onChange={formik.handleChange}
+                value={formik.values.password}
                 required
                 width="400px"
                 height="40px"
               />
+              {formik.errors.password ? <MsgError text={formik.errors.password} /> : null}
             </FormItem>
 
             <FormItem>
@@ -106,10 +131,13 @@ export default function NewRegister() {
                 name="confirmaSenha"
                 placeholder="••••••••••"
                 className="confirmPassword"
+                onChange={formik.handleChange}
+                value={formik.values.password}
                 required
                 width="400px"
                 height="40px"
               />
+              {formik.errors.password ? <MsgError text={formik.errors.password} /> : null}
             </FormItem>
 
             <StyledButton type="red" label="Cadastrar" width="380px" height="50px" />
